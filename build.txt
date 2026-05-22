@@ -1,0 +1,9 @@
+displayName = Shiny's Remix
+author = Shiny  Kelp
+version = 1.0.1
+hideCode = false
+hideResources = false
+includeSource = true
+buildIgnore = *.csproj, *.user, obj\*, bin\*, .vs\*, Old\*, *.sln
+includePDB = true
+sortAfter = TRAEProject

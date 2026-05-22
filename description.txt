@@ -1,0 +1,20 @@
+If you're tired of vanilla spears but you want a conservative, "vanilla+" style mod that improves them, this might just be the mod you're looking for!
+
+Nice & Balanced Spear Buffs makes all spears a lot more comfortable and easy to use with a brand new thrust animation that allows you to quickly retarget the spear!
+
+Additionally, this mod also buffs a handful of spears, giving them new effects.
+
+List of changes:
+-All spears have autoswing.
+-All spears except the Ghastly Glaive have a new thrusting animation.
+-The Rotted Fork inflicts Bleeding debuff.
+-Dark Lance inflicts Shadowflame debuff like in 1.4.4.
+-Mushroom Spear and its projectile inflict Confused debuff.
+-Mushroom Spear's Mushroom projectiles have been adjusted to better reflect the new animation.
+-Mushroom Spear's Mushroom projectiles now deal 100% of the base damage, up from 33%.
+-Chlorophyte Partisan and its projectile inflict Venom debuff.
+-Spore Cloud (Chlorophyte Partisan's projectile) grows bigger in size over time.
+-North Pole and its projectiles inflict Frostbite debuff.
+-North Pole has new particle effects.
+
+Note: The Rotted Fork, Dark Lance and Gungnir will receive their 1.4.4 projectiles when tModLoader updates to that version.

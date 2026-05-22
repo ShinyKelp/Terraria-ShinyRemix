@@ -1,0 +1,15 @@
+Mods: {
+	ShinyRemix: {
+		Items: {
+			MoonEssence: {
+				DisplayName: Moon Essence
+				Tooltip: ""
+			}
+		}
+
+		Projectiles: {
+			FrostBlastMagic.DisplayName: Frost Blast Magic
+			FrostBlastMelee.DisplayName: Frost Blast Melee
+		}
+	}
+}
