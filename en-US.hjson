@@ -10,6 +10,7 @@ Mods: {
 		Projectiles: {
 			FrostBlastMagic.DisplayName: Frost Blast Magic
 			FrostBlastMelee.DisplayName: Frost Blast Melee
+			FlailExtensionProj.DisplayName: Flail Extension Proj
 		}
 	}
 }
