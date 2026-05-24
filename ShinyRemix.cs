@@ -43,6 +43,9 @@ namespace ShinyRemix
                 }
                 if(traeMod.TryFind<ModItem>("JoterTrident", out ModItem joterItem))
                     NNBSpearUtils.TRAEJoterTridentItemID = joterItem.Type;
+                if(traeMod.TryFind<ModProjectile>("FullMoonP", out proj))
+                    FlailUtils.FullMoonID = proj.Type;
+
             }
         }
 	}

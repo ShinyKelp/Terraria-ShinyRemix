@@ -9,5 +9,6 @@ namespace ShinyRemix.Flails
     public static class FlailUtils
     {
         public static int VaporizerFlailID = -1;
+        public static int FullMoonID = -1;
     }
 }

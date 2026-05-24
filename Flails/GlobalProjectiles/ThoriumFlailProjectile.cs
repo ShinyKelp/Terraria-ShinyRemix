@@ -14,15 +14,15 @@ using Terraria.ModLoader;
 
 namespace ShinyRemix.Flails.GlobalProjectiles
 {
-    public class FlailThoriumProjectile : FlailProjectileBase
+    public class ThoriumFlailProjectile : BaseFlailProjectile
     {
         public override bool AppliesToEntity(Projectile entity, bool lateInstantiation)
         {
-            return ShinyUtils.Thorium && InheritsFromFlailBase(entity);
+            return ShinyUtils.Thorium && InheritsFromThoriumBase(entity);
         }
 
 
-        private bool InheritsFromFlailBase(Projectile projectile)
+        private bool InheritsFromThoriumBase(Projectile projectile)
         {
             if (projectile.ModProjectile == null)
                 return false;

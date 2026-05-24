@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using ShinyRemix.Common;
 using ShinyRemix.Flails.ModProjectiles;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ using Terraria.ModLoader;
 
 namespace ShinyRemix.Flails.GlobalProjectiles
 {
-    public class FlailProjectileBase : GlobalProjectile
+    public class BaseFlailProjectile : GlobalProjectile
     {
         public override bool InstancePerEntity => true;
 
@@ -33,9 +34,10 @@ namespace ShinyRemix.Flails.GlobalProjectiles
             projectile.scale *= prefixModifier;
             if (player.meleeScaleGlove)
                 projectile.scale += 0.2f;
-            
-            
-            if(projectile.owner == Main.myPlayer)
+            else if (ShinyUtils.TRAE && player.GetModPlayer<ShinyMeleeScale>().meleeScaleGlove)
+                projectile.scale += 0.2f;
+
+            if (projectile.owner == Main.myPlayer)
             {
                 Projectile proj = Projectile.NewProjectileDirect(projectile.GetSource_FromThis(), projectile.position, Vector2.Zero, ModContent.ProjectileType<FlailExtensionProj>(), projectile.damage, projectile.knockBack, projectile.owner, projectile.whoAmI, origScale);
             }

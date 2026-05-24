@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
+using ShinyRemix.Common;
 using System;
 using Terraria;
 using Terraria.Audio;
@@ -54,8 +55,9 @@ namespace ShinyRemix.NNBSpears.GlobalProjectiles
             projectile.scale = player.HeldItem.scale;
             if (player.meleeScaleGlove)
                 projectile.scale += 0.2f;
+            else if (ShinyUtils.TRAE && player.GetModPlayer<ShinyMeleeScale>().meleeScaleGlove)
+                projectile.scale += 0.2f;
 
-            Main.NewText($"Values:\nItemAnimMax: {player.itemAnimationMax}\nItemAnim: {player.itemAnimation}\nUseTime: {player.HeldItem.useTime}\nUseAnim: {player.HeldItem.useAnimation}");
             //Store duration for stable use in AI
             projectile.localAI[0] = player.itemAnimationMax;
 

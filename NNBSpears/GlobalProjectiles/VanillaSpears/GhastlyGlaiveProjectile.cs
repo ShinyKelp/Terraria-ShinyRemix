@@ -16,7 +16,7 @@ namespace ShinyRemix.NNBSpears.GlobalProjectiles.VanillaSpears
     {
         protected override int SpearID => ProjectileID.MonkStaffT2;
         protected override float HoldoutRangeMax => 175f;
-        protected override float HoldoutRangeMin => 12f;
+        protected override float HoldoutRangeMin => 36f;
         protected override float HoldPositionRelative => 0.78f;
         protected override bool HasDustParticles => true;
 
@@ -26,7 +26,7 @@ namespace ShinyRemix.NNBSpears.GlobalProjectiles.VanillaSpears
         public override void OnSpawn(Projectile projectile, IEntitySource source)
         {
             base.OnSpawn(projectile, source);
-            projectile.scale += 0.1f;
+            projectile.scale += 0.08f;
         }
         protected override void CreateDustParticles(Projectile projectile)
         {

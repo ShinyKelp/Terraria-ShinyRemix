@@ -8,7 +8,7 @@ namespace ShinyRemix.NNBSpears.GlobalProjectiles.VanillaSpears
     {
         protected override int SpearID => ProjectileID.TheRottedFork;
         protected override float HoldoutRangeMax => 128f;
-        protected override float HoldoutRangeMin => 16f;
+        protected override float HoldoutRangeMin => 20f;
         protected override bool HasDustParticles => true;
         protected override bool HasShockwaveEffect => true;
         protected override float ExtensionMultiplier => 2.9f;

@@ -14,19 +14,11 @@ using Terraria.ModLoader;
 
 namespace ShinyRemix.Flails.GlobalProjectiles
 {
-    public class StormDiverFlailProjectile : GlobalProjectile
+    public class TraeFlailProjectile : BaseFlailProjectile
     {
-        public override bool InstancePerEntity => true;
-
         public override bool AppliesToEntity(Projectile entity, bool lateInstantiation)
         {
-            return ShinyUtils.StormDivers && entity.type == FlailUtils.VaporizerFlailID;
+            return ShinyUtils.TRAE && entity.type == FlailUtils.FullMoonID;
         }
-        public override bool PreAI(Projectile projectile)
-        {
-            //Vaporizer needs the timer to be full numbers for its spike shoot condition
-            projectile.localAI[1] = (float)Math.Round(projectile.localAI[1]);
-            return base.PreAI(projectile);
-        }    
     }
 }

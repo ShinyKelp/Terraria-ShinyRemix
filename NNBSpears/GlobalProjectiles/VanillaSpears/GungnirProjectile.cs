@@ -8,8 +8,8 @@ namespace ShinyRemix.NNBSpears.GlobalProjectiles.VanillaSpears
     public class GungnirProjectile : SpearProjectileBase
     {
         protected override int SpearID => ProjectileID.Gungnir;
-        protected override float HoldoutRangeMax => 204f;
-        protected override float HoldoutRangeMin => 36f;
+        protected override float HoldoutRangeMax => 184f;
+        protected override float HoldoutRangeMin => 42f;
         protected override bool HasDustParticles => true;
         protected override bool HasShockwaveEffect => true;
         protected override float ExtensionMultiplier => 2.3f;

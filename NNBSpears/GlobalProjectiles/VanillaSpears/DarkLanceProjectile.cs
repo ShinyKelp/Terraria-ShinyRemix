@@ -12,8 +12,8 @@ namespace ShinyRemix.NNBSpears.GlobalProjectiles.VanillaSpears
     public class DarkLanceProjectile : SpearProjectileBase
     {
         protected override int SpearID => ProjectileID.DarkLance;
-        protected override float HoldoutRangeMax => 158f;
-        protected override float HoldoutRangeMin => 16f;
+        protected override float HoldoutRangeMax => 156f;
+        protected override float HoldoutRangeMin => 24f;
         protected override float HoldPositionRelative => 0.75f;
         protected override bool HasDustParticles => true;
         protected override bool HasShockwaveEffect => true;
