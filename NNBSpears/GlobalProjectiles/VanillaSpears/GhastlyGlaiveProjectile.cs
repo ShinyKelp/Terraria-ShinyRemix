@@ -20,6 +20,8 @@ namespace ShinyRemix.NNBSpears.GlobalProjectiles.VanillaSpears
         protected override float HoldPositionRelative => 0.78f;
         protected override bool HasDustParticles => true;
 
+        protected override bool UsesCustomHitCooldown => true;
+
 
         public override void OnSpawn(Projectile projectile, IEntitySource source)
         {
@@ -72,13 +74,6 @@ namespace ShinyRemix.NNBSpears.GlobalProjectiles.VanillaSpears
                     dust2.noLight = true;
                 }
             }
-        }
-
-        //Needs a custom immunity system; otherwise hits every frame for some reason
-        public override bool PreAI(Projectile projectile)
-        {
-
-            return base.PreAI(projectile);
         }
 
         public override bool PreDraw(Projectile projectile, ref Color lightColor)

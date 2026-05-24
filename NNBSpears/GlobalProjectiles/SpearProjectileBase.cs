@@ -54,9 +54,16 @@ namespace ShinyRemix.NNBSpears.GlobalProjectiles
             projectile.scale = player.HeldItem.scale;
             if (player.meleeScaleGlove)
                 projectile.scale += 0.2f;
+
+            Main.NewText($"Values:\nItemAnimMax: {player.itemAnimationMax}\nItemAnim: {player.itemAnimation}\nUseTime: {player.HeldItem.useTime}\nUseAnim: {player.HeldItem.useAnimation}");
+            //Store duration for stable use in AI
+            projectile.localAI[0] = player.itemAnimationMax;
+
+            projectile.timeLeft = (int)projectile.localAI[0];
+
             //Immunity frames scale with item speed, ensuring two hits per thrust but with custom timing.
             projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = (int)Math.Ceiling(player.itemAnimationMax * 0.5f);
+            projectile.localNPCHitCooldown = (int)Math.Ceiling(projectile.localAI[0] * 0.5f);
             if(NNBSpearUtils.TRAE && player.HeldItem != null && player.HeldItem.UseSound == null)
                 SoundEngine.PlaySound(SoundID.Item1, projectile.Center);
         }
@@ -74,16 +81,9 @@ namespace ShinyRemix.NNBSpears.GlobalProjectiles
                 }
             }
 
-            int duration = player.itemAnimationMax; // Define the duration the projectile will exist in frames
-               
+            int duration = (int)projectile.localAI[0]; // Define the duration the projectile will exist in frames
             
             player.heldProj = projectile.whoAmI; // Update the player's held projectile id
-
-            // Reset projectile time left if necessary
-            if (projectile.timeLeft > duration)
-            {
-                projectile.timeLeft = duration;
-            }
 
             //Extra AI nuance: spear follows mouse during full animation.
             Vector2 ownerMountedCenter = player.RotatedRelativePoint(player.MountedCenter, true);
@@ -99,16 +99,16 @@ namespace ShinyRemix.NNBSpears.GlobalProjectiles
             float scaledHoldPosRelative = MathHelper.Lerp(HoldPositionRelative, HoldPositionRelative * projectile.scale, 0.1f);
             float retreatDistance = 1 - scaledHoldPosRelative;
 
-
-            if (projectile.timeLeft >= initialThrustTiming)
+            
+            if (player.itemAnimation >= initialThrustTiming)
             {
                 //Initial thrust animation. Progress goes from 0.0 to 1.0 extremely fast.
-                progress = (duration - projectile.timeLeft) / initialThrustDurationAbs;
+                progress = (duration - player.itemAnimation) / initialThrustDurationAbs;
             }
-            else if (projectile.timeLeft < initialThrustTiming && projectile.timeLeft >= retreatTiming)
+            else if (player.itemAnimation < initialThrustTiming && player.itemAnimation >= retreatTiming)
             {
                 //Partial retreat animation. Progress goes from 1.0 to HoldPositionRelative fast.
-                progress = (projectile.timeLeft - retreatTiming) / retreatDurationAbs;
+                progress = (player.itemAnimation - retreatTiming) / retreatDurationAbs;
                 progress = progress * retreatDistance + HoldPositionRelative;
             }
             else
@@ -142,7 +142,7 @@ namespace ShinyRemix.NNBSpears.GlobalProjectiles
         //The seventh one: the Mushroom Spear, overrides the function instead.
         protected virtual void ShootProjectiles(Projectile projectile)
         {
-            if (!shotProjectile && (float)projectile.timeLeft <= Math.Max(ShotProjectileAt * (float)player.itemAnimationMax, 1f))
+            if (!shotProjectile && (float)player.itemAnimation <= Math.Max(ShotProjectileAt * (float)projectile.localAI[0], 1f))
             {
                 Projectile proj = Projectile.NewProjectileDirect(projectile.GetSource_FromThis(), projectile.Center, projectile.velocity * ShotProjectileSpeed, ShotProjectileID, projectile.damage, projectile.knockBack, Main.player[projectile.owner].whoAmI);
                 proj.scale = projectile.scale;
@@ -179,12 +179,6 @@ namespace ShinyRemix.NNBSpears.GlobalProjectiles
 
         public Rectangle properSpearHitbox;
 
-        public override bool PreDraw(Projectile projectile, ref Color lightColor)
-        {
-            //DrawHitbox();
-            return true;
-        }
-
         protected void DrawHitbox()
         {
             Texture2D pixel = TextureAssets.MagicPixel.Value;
@@ -220,6 +214,8 @@ namespace ShinyRemix.NNBSpears.GlobalProjectiles
             base.OnHitNPC(projectile, target, hit, damageDone);
         }
 
+        private bool attemptedShockwave = false;
+
         public override bool? Colliding(Projectile projectile, Rectangle projHitbox, Rectangle targetHitbox)
         {
             if (!HasShockwaveEffect)
@@ -230,13 +226,14 @@ namespace ShinyRemix.NNBSpears.GlobalProjectiles
                 if (properSpearHitbox.Width == 0)
                     spearHitbox = projHitbox;
 
-                int duration = player.itemAnimationMax;
-                if (projectile.timeLeft < player.itemAnimationMax * (1-InitialThrustDuration))
+                int duration = (int)projectile.localAI[0];
+                if (player.itemAnimation < duration * (1-InitialThrustDuration) && attemptedShockwave)
                 {
                     return spearHitbox.Intersects(targetHitbox);
                 }
                 else
                 {
+                    attemptedShockwave = true;
                     Vector2 maxRangePos = spearHitbox.Center.ToVector2() + projectile.velocity * (spearHitbox.Width * ExtensionMultiplier);
                     float collisionPoint = 0f;
                     if (Collision.CheckAABBvLineCollision(
@@ -254,6 +251,8 @@ namespace ShinyRemix.NNBSpears.GlobalProjectiles
                 }
             }
         }
+
+
 
         //Code taken and adapted from vanilla for easier study. This function is not utilized.
         private void VanillaDraw(Projectile projectile, ref Color lightColor)

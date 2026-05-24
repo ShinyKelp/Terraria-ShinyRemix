@@ -13,7 +13,8 @@ namespace ShinyRemix.NNBSpears.GlobalItems
         //Add autoswing to all spears.
         public override bool AppliesToEntity(Item item, bool lateInstatiation)
         {
-            return NNBSpearUtils.VanillaSpears.Contains(item.type);
+            return NNBSpearUtils.VanillaSpears.Contains(item.type) ||
+                NNBSpearUtils.ModSpearIDs.ContainsValue(item.type);
         }
 
         public override void SetDefaults(Item item)
@@ -21,7 +22,7 @@ namespace ShinyRemix.NNBSpears.GlobalItems
             item.autoReuse = true;
         }
 
-        //Add size and speed reforges
+        //Add size and speed reforges for vanilla spears
         public override void SetStaticDefaults()
         {
             for (int i = 0; i < NNBSpearUtils.VanillaSpears.Count; i++)
@@ -30,5 +31,14 @@ namespace ShinyRemix.NNBSpears.GlobalItems
             }
         }
 
+        //New AI disproportionately benefits attack speed, so we make spears scale slightly less off melee speed.
+        public override float UseSpeedMultiplier(Item item, Player player)
+        {
+            float vanillaSpeed = player.GetAttackSpeed(DamageClass.Melee);
+
+            float meleeSpeedCompensation = MathHelper.Lerp(1f, vanillaSpeed, 0.3f);
+
+            return 1f / meleeSpeedCompensation;
+        }
     }
 }

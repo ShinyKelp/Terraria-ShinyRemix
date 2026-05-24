@@ -186,6 +186,10 @@ namespace ShinyRemix.NNBSpears.GlobalItems
             }
         }
 
-
+        //Must undo TRAE's anim multiplier for spears
+        public override float UseAnimationMultiplier(Item item, Player player)
+        {
+            return player.GetAttackSpeed(DamageClass.Melee);
+        }
     }
 }
