@@ -1,3 +1,4 @@
+using ShinyRemix.Flails;
 using ShinyRemix.NNBSpears;
 using Terraria.ModLoader;
 
@@ -9,18 +10,21 @@ namespace ShinyRemix
 		{
             if (ModLoader.TryGetMod("StormDiversMod", out Mod stormMod))
             {
-                NNBSpearUtils.StormDivers = true;
+                ShinyUtils.StormDivers = true;
                 ModProjectile proj;
                 foreach(string modSpearName in NNBSpearUtils.ModSpearIDs.Keys)
                 {
                     if(stormMod.TryFind(modSpearName, out proj))
                         NNBSpearUtils.ModSpearIDs[modSpearName] = proj.Type;
+                    if(stormMod.TryFind("DestroyerFlailProj", out proj))
+                        FlailUtils.VaporizerFlailID = proj.Type;
+
 
                 }
             }
             if(ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod))
             {
-                NNBSpearUtils.Thorium = true;
+                ShinyUtils.Thorium = true;
                 ModProjectile proj;
                 foreach (string modSpearName in NNBSpearUtils.ModSpearIDs.Keys)
                 {
@@ -30,7 +34,7 @@ namespace ShinyRemix
             }
             if (ModLoader.TryGetMod("TRAEProject", out Mod traeMod))
             {
-                NNBSpearUtils.TRAE = true;
+                ShinyUtils.TRAE = true;
                 ModProjectile proj;
                 foreach (string modSpearName in NNBSpearUtils.ModSpearIDs.Keys)
                 {

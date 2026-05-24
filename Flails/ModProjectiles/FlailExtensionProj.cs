@@ -38,8 +38,11 @@ namespace ShinyRemix.Flails.ModProjectiles
         {
             Projectile.alpha = 255;
             parentProj = Main.projectile[(int)Projectile.ai[0]];
+            origScale = Projectile.ai[1];
             base.OnSpawn(source);
         }
+
+        float origScale = 1f;
 
         public override void AI()
         {
@@ -62,16 +65,26 @@ namespace ShinyRemix.Flails.ModProjectiles
             else return false;
         }
 
-
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             Projectile.localNPCImmunity[target.whoAmI] = parentProj.localNPCHitCooldown;
             parentProj.localNPCImmunity[target.whoAmI] = parentProj.localNPCHitCooldown;
+            parentProj.ModProjectile?.OnHitNPC(target,hit,damageDone);
         }
 
         public override void ModifyDamageHitbox(ref Rectangle hitbox)
         {
             hitbox = parentProj.Hitbox;
+
+            float scaleRatio = parentProj.scale / origScale;
+
+            int inflateX = (int)((hitbox.Width * scaleRatio - hitbox.Width) / 2f);
+
+            int inflateY = (int)((hitbox.Height * scaleRatio - hitbox.Height) / 2f);
+
+            hitbox.Inflate(inflateX, inflateY);
         }
+
+
     }
 }

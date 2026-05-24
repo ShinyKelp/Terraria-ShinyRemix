@@ -64,7 +64,7 @@ namespace ShinyRemix.NNBSpears.GlobalProjectiles
             //Immunity frames scale with item speed, ensuring two hits per thrust but with custom timing.
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = (int)Math.Ceiling(projectile.localAI[0] * 0.5f);
-            if(NNBSpearUtils.TRAE && player.HeldItem != null && player.HeldItem.UseSound == null)
+            if(ShinyUtils.TRAE && player.HeldItem != null && player.HeldItem.UseSound == null)
                 SoundEngine.PlaySound(SoundID.Item1, projectile.Center);
         }
 

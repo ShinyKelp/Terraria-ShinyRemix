@@ -14,7 +14,7 @@ using Terraria.ModLoader;
 
 namespace ShinyRemix.Flails.GlobalProjectiles
 {
-    public class FlailProjectiles : GlobalProjectile
+    public class FlailProjectileBase : GlobalProjectile
     {
         public override bool InstancePerEntity => true;
 
@@ -34,20 +34,14 @@ namespace ShinyRemix.Flails.GlobalProjectiles
             if (player.meleeScaleGlove)
                 projectile.scale += 0.2f;
             
-            Vector2 center = projectile.Center;
-            int origWidth = projectile.width;
-            projectile.width = (int)Math.Ceiling(projectile.width * (projectile.scale / origScale) * (projectile.scale / origScale));
-            projectile.height = (int)Math.Ceiling(projectile.height * (projectile.scale / origScale) * (projectile.scale / origScale));
-            projectile.Center = center;
             
             if(projectile.owner == Main.myPlayer)
             {
-                Projectile proj = Projectile.NewProjectileDirect(projectile.GetSource_FromThis(), projectile.position, Vector2.Zero, ModContent.ProjectileType<FlailExtensionProj>(), projectile.damage, projectile.knockBack, projectile.owner, projectile.whoAmI);
+                Projectile proj = Projectile.NewProjectileDirect(projectile.GetSource_FromThis(), projectile.position, Vector2.Zero, ModContent.ProjectileType<FlailExtensionProj>(), projectile.damage, projectile.knockBack, projectile.owner, projectile.whoAmI, origScale);
             }
-            base.OnSpawn(projectile, source);
         }
 
-        const float baseDroppedRotationSpeed = 0.25f;
+        const float baseDroppedRotationSpeed = 0.35f;
 
         const float baseSwingRotationSpeed = 0f;
 
@@ -64,6 +58,8 @@ namespace ShinyRemix.Flails.GlobalProjectiles
         private float meleeSpeed = 1f;
         private float weaponSpeed = 1f;
         private float FinalSpeedModifier => meleeSpeed + weaponSpeed - 2f;
+
+        private float launchGhostGracePeriod = 1f;
 
         /*  AI[0]:
          *  0: Spinning
@@ -102,14 +98,27 @@ namespace ShinyRemix.Flails.GlobalProjectiles
                 projectile.localNPCHitCooldown = (int)Math.Max(Math.Round((float)baseFramesPerSwing / (1f + FinalSpeedModifier * 0.5f)), 2) - 1;
                 //projectile.Center = player.MountedCenter + Vector2.Normalize(offset) * currentRadius * radiusModifier;
             }
+            
             if (projectile.ai[0] == 6)
             {
-                projectile.rotation = baseDroppedRotationSpeed * droppedFrameCount * player.direction;
+                projectile.localNPCHitCooldown = (int) Math.Ceiling(12f / (1f + FinalSpeedModifier));
+                projectile.rotation = baseDroppedRotationSpeed * droppedFrameCount * (1f + FinalSpeedModifier * 0.5f) * player.direction;
                 droppedFrameCount++;
             }
 
             //Main.NewText($"Local frames: {projectile.localNPCHitCooldown}");
 
+        }
+
+        public override void ModifyDamageHitbox(Projectile projectile, ref Rectangle hitbox)
+        {
+            float scaleRatio = projectile.scale / origScale;
+
+            int inflateX = (int)((hitbox.Width * scaleRatio - hitbox.Width) / 2f);
+
+            int inflateY = (int)((hitbox.Height * scaleRatio - hitbox.Height) / 2f);
+
+            hitbox.Inflate(inflateX, inflateY);
         }
 
         public override bool? CanHitNPC(Projectile projectile, NPC target)
@@ -119,12 +128,6 @@ namespace ShinyRemix.Flails.GlobalProjectiles
             return base.CanHitNPC(projectile, target);
         }
 
-        public override bool PreDraw(Projectile projectile, ref Color lightColor)
-        {
-            //DrawHitbox(projectile);
-
-            return base.PreDraw(projectile, ref lightColor);
-        }
         protected void DrawHitbox(Projectile proj)
         {
             Texture2D pixel = TextureAssets.MagicPixel.Value;

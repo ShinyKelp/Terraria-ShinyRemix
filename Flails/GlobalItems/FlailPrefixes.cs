@@ -9,7 +9,7 @@ using Terraria.GameContent.Prefixes;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ShinyRemix.Flails
+namespace ShinyRemix.Flails.GlobalItems
 {
     public class FlailPrefixes : GlobalItem
     {
@@ -30,7 +30,7 @@ namespace ShinyRemix.Flails
         public override bool AppliesToEntity(Item entity, bool lateInstantiation)
         {
       
-            return VanillaFlailIDs.Contains(entity.type);
+            return VanillaFlailIDs.Contains(entity.type) && !ShinyUtils.TRAE;
         }
 
         public override void SetDefaults(Item entity)

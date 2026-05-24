@@ -16,7 +16,7 @@ namespace ShinyRemix.NNBSpears.GlobalProjectiles.VanillaSpears
 
         public override bool AppliesToEntity(Projectile entity, bool lateInstantiation)
         {
-            return !NNBSpearUtils.TRAE && base.AppliesToEntity(entity, lateInstantiation);
+            return !ShinyUtils.TRAE && base.AppliesToEntity(entity, lateInstantiation);
         }
         public override void OnHitNPC(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)
         {
