@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using ShinyRemix.Common;
+using ShinyRemix.Common.GlobalItems;
+using ShinyRemix.Common.ModPlayers;
 using ShinyRemix.Flails.ModProjectiles;
 using System;
 using System.Collections.Generic;

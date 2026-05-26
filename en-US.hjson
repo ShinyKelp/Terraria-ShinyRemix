@@ -12,5 +12,12 @@ Mods: {
 			FrostBlastMelee.DisplayName: Frost Blast Melee
 			FlailExtensionProj.DisplayName: Flail Extension Proj
 		}
+
+		Buffs: {
+			BlessedBuff: {
+				DisplayName: Blessed
+				Description: Heavily reduced mana cost
+			}
+		}
 	}
 }
