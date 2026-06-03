@@ -16,7 +16,10 @@ namespace ShinyRemix.BlessedMechanic.UI
     {
         protected override int NPC_ID => NPCID.Wizard;
         protected override string ButtonText => "Bless";
-
+        protected override bool CustomLogicCheck()
+        {
+            return ShinyOptions.BlessedMechanic;
+        }
         protected override void OnButtonPressed()
         {
             BlessHeldWeapon();

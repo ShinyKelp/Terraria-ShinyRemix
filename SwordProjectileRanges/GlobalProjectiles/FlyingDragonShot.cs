@@ -16,7 +16,7 @@ namespace ShinyRemix.SwordProjectileRanges.GlobalProjectiles
         public override bool InstancePerEntity => true;
         public override bool AppliesToEntity(Projectile entity, bool lateInstantiation)
         {
-            return entity.type == ProjectileID.DD2SquireSonicBoom;
+            return ShinyOptions.SwordProjectileRanges && entity.type == ProjectileID.DD2SquireSonicBoom;
         }
 
         Vector2 direction;

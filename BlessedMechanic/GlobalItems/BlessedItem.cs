@@ -17,7 +17,7 @@ namespace ShinyRemix.BlessedMechanic.GlobalItems
 
         public override bool AppliesToEntity(Item entity, bool lateInstantiation)
         {
-            return entity.DamageType == DamageClass.Magic;
+            return ShinyOptions.BlessedMechanic && entity.DamageType == DamageClass.Magic;
         }
 
         public override void SaveData(Item item, TagCompound tag)

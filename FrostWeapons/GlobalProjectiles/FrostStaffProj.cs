@@ -18,7 +18,7 @@ namespace ShinyRemix.FrostWeapons.GlobalProjectiles
 
         public override bool AppliesToEntity(Projectile entity, bool lateInstantiation)
         {
-            return entity.type == ProjectileID.FrostBoltStaff;
+            return ShinyOptions.FrostWeaponChanges && entity.type == ProjectileID.FrostBoltStaff;
         }
         public override void OnSpawn(Projectile projectile, IEntitySource source)
         {

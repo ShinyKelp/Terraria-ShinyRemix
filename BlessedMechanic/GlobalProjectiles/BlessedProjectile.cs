@@ -17,20 +17,26 @@ namespace ShinyRemix.BlessedMechanic.GlobalProjectiles
         public bool blessed = false;
         const int buffTimerPerHit = 30;
         const int maxBuffTimer = 630;
+
+        public override bool AppliesToEntity(Projectile entity, bool lateInstantiation)
+        {
+            return ShinyOptions.BlessedMechanic && entity.DamageType == DamageClass.Magic;
+        }
+
         public override void OnSpawn(Projectile projectile, IEntitySource source)
         {
             if (source is EntitySource_ItemUse itemSource &&
                 itemSource.Item.TryGetGlobalItem(out BlessedItem blessedItem) &&
                 blessedItem.blessed)
             {
-                projectile.GetGlobalProjectile<BlessedProjectile>().blessed = true;
+                blessed = true;
             }
             else if (source is EntitySource_Parent parentSource &&
                 parentSource.Entity is Projectile parentProjectile)
             {
                 var parentGlobal = parentProjectile.GetGlobalProjectile<BlessedProjectile>();
                 if (parentGlobal.blessed)
-                    projectile.GetGlobalProjectile<BlessedProjectile>().blessed = true;
+                    blessed = true;
                 
             }
         }

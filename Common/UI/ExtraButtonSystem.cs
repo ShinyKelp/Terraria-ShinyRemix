@@ -38,6 +38,9 @@ namespace ShinyRemix.Common.UI
         //Function drawing an extra button over NPC chat UI. Mimics vanilla looks.
         private bool DrawCustomButton()
         {
+            if (!CustomLogicCheck())
+                return true;
+
             // Must be talking to an NPC
             if (Main.LocalPlayer.talkNPC < 0)
                 return true;
@@ -111,6 +114,11 @@ namespace ShinyRemix.Common.UI
                 }
             }
             previousMouseLeft = Main.mouseLeft;
+            return true;
+        }
+
+        protected virtual bool CustomLogicCheck()
+        {
             return true;
         }
 

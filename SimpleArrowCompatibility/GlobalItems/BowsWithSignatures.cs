@@ -20,7 +20,7 @@ namespace ShinyRemix.SimpleArrowCompatibility.GlobalItems
 
         public override bool AppliesToEntity(Item entity, bool lateInstantiation)
         {
-            return SimpleArrowCompatUtils.BowArrowSignatures.ContainsKey(entity.type);
+            return ShinyOptions.SimpleArrowCompatibility && SimpleArrowCompatUtils.BowArrowSignatures.ContainsKey(entity.type);
         }
         public override void ModifyShootStats(Item item, Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
         {

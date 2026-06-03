@@ -15,7 +15,7 @@ namespace ShinyRemix.OverloadMechanic.GlobalProjectiles
     {
         public override bool AppliesToEntity(Projectile entity, bool lateInstantiation)
         {
-            return entity.DamageType == DamageClass.Ranged;
+            return ShinyOptions.OverloadMechanic && entity.DamageType == DamageClass.Ranged;
         }
 
         public override void OnSpawn(Projectile projectile, IEntitySource source)

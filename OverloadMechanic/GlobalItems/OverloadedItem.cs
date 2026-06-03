@@ -18,7 +18,7 @@ namespace ShinyRemix.OverloadMechanic.GlobalItems
         public override bool InstancePerEntity => true;
         public override bool AppliesToEntity(Item entity, bool lateInstantiation)
         {
-            return entity.DamageType == DamageClass.Ranged && entity.useAmmo != AmmoID.None;
+            return ShinyOptions.OverloadMechanic && entity.DamageType == DamageClass.Ranged && entity.useAmmo != AmmoID.None;
         }
 
         public override void SaveData(Item item, TagCompound tag)

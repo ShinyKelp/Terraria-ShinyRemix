@@ -18,7 +18,13 @@ namespace ShinyRemix.FrostWeapons.GlobalProjectiles
 
         public override bool AppliesToEntity(Projectile entity, bool lateInstantiation)
         {
-            return entity.type == ProjectileID.IceBolt;
+            return ShinyOptions.FrostWeaponChanges && entity.type == ProjectileID.IceBolt;
+        }
+
+        public override void OnSpawn(Projectile projectile, IEntitySource source)
+        {
+            projectile.damage = (int)Math.Floor((float)projectile.damage * 2f / 3f);
+            base.OnSpawn(projectile, source);
         }
 
         protected override Vector2 BaseShotDistance => new Vector2(-32f, -32f);

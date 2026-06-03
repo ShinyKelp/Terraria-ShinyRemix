@@ -23,7 +23,7 @@ namespace ShinyRemix.Flails.GlobalProjectiles
         protected Player player;
         public override bool AppliesToEntity(Projectile entity, bool lateInstantiation)
         {
-            return entity.aiStyle == ProjAIStyleID.Flail;
+            return ShinyOptions.FlailChanges && entity.aiStyle == ProjAIStyleID.Flail;
         }
         public override void OnSpawn(Projectile projectile, IEntitySource source)
         {

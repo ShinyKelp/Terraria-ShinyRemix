@@ -29,8 +29,7 @@ namespace ShinyRemix.Flails.GlobalItems
 
         public override bool AppliesToEntity(Item entity, bool lateInstantiation)
         {
-      
-            return VanillaFlailIDs.Contains(entity.type) && !ShinyUtils.TRAE;
+            return ShinyOptions.FlailChanges && VanillaFlailIDs.Contains(entity.type) && !ShinyUtils.TRAE;
         }
 
         public override void SetDefaults(Item entity)

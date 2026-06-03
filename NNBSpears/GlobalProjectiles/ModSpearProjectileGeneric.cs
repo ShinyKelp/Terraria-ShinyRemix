@@ -24,7 +24,8 @@ namespace ShinyRemix.NNBSpears.GlobalProjectiles
         protected override bool UsesCustomHitCooldown => true;
         public override bool AppliesToEntity(Projectile entity, bool lateInstantiation)
         {
-            if (entity.aiStyle == ProjAIStyleID.Spear &&
+            if (ShinyOptions.SpearRework &&
+                entity.aiStyle == ProjAIStyleID.Spear &&
                 !NNBSpearUtils.VanillaSpears.Contains(entity.type) &&
                 !NNBSpearUtils.ModSpearIDs.ContainsValue(entity.type))
                 return true;

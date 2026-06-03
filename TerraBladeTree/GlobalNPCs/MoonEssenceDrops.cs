@@ -15,7 +15,7 @@ namespace ShinyRemix.TerraBladeTree.GlobalNPCs
     {
         public override bool AppliesToEntity(NPC entity, bool lateInstantiation)
         {
-            return entity.type == NPCID.BloodNautilus || entity.type == NPCID.GoblinShark || entity.type == NPCID.BloodEelHead;
+            return ShinyOptions.TerraBladeTree && (entity.type == NPCID.BloodNautilus || entity.type == NPCID.GoblinShark || entity.type == NPCID.BloodEelHead);
         }
 
         public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)

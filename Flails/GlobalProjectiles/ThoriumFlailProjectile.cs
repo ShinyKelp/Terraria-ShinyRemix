@@ -18,7 +18,7 @@ namespace ShinyRemix.Flails.GlobalProjectiles
     {
         public override bool AppliesToEntity(Projectile entity, bool lateInstantiation)
         {
-            return ShinyUtils.Thorium && InheritsFromThoriumBase(entity);
+            return ShinyOptions.FlailChanges && ShinyUtils.Thorium && InheritsFromThoriumBase(entity);
         }
 
 

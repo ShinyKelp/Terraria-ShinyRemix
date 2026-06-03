@@ -15,7 +15,7 @@ namespace ShinyRemix.TerraBladeTree.GlobalItems
     {
         public override bool AppliesToEntity(Item entity, bool lateInstantiation)
         {
-            return entity.type == ItemID.TerraBlade || entity.type == ItemID.BladeofGrass || entity.type == ItemID.TrueExcalibur || entity.type == ItemID.TrueNightsEdge;
+            return ShinyOptions.TerraBladeTree && (entity.type == ItemID.TerraBlade || entity.type == ItemID.BladeofGrass || entity.type == ItemID.TrueExcalibur || entity.type == ItemID.TrueNightsEdge);
         }
         public override void SetDefaults(Item entity)
         {
@@ -25,7 +25,11 @@ namespace ShinyRemix.TerraBladeTree.GlobalItems
                     entity.damage = 120;    //85 > 120. Requires Golem + Empress. + Projectile deals 80% dmg (96)
                     break;
                 case ItemID.BladeofGrass:
-                    entity.damage = 28;     //18 > 28. Is post-Bee.
+                    entity.useAnimation = 30;
+                    entity.useTime = 30;    //20 > 30.
+                    entity.damage = 36;     //18 > 36.
+                                            //Projectile damage: 4 > 9.
+                                            //Is post-Bee.
                     break;
                 case ItemID.TrueExcalibur:
                     entity.damage = 80;     //72 > 80. Is post-Plantera.

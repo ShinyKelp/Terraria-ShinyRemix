@@ -13,8 +13,8 @@ namespace ShinyRemix.NNBSpears.GlobalItems
         //Add autoswing to all spears.
         public override bool AppliesToEntity(Item item, bool lateInstatiation)
         {
-            return NNBSpearUtils.VanillaSpears.Contains(item.type) ||
-                NNBSpearUtils.ModSpearIDs.ContainsValue(item.type);
+            return ShinyOptions.SpearRework && (NNBSpearUtils.VanillaSpears.Contains(item.type) ||
+                NNBSpearUtils.ModSpearIDs.ContainsValue(item.type));
         }
 
         public override void SetDefaults(Item item)

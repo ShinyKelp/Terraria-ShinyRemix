@@ -14,7 +14,7 @@ namespace ShinyRemix.SwordProjectileRanges.GlobalItems
     {
         public override bool AppliesToEntity(Item entity, bool lateInstantiation)
         {
-            return entity.type == ItemID.InfluxWaver;
+            return ShinyOptions.SwordProjectileRanges && entity.type == ItemID.InfluxWaver;
         }
         public override void SetDefaults(Item entity)
         {

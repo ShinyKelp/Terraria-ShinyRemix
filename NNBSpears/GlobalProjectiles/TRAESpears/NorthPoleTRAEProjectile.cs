@@ -16,7 +16,7 @@ namespace ShinyRemix.NNBSpears.GlobalProjectiles.TRAESpears
 
         public override bool AppliesToEntity(Projectile entity, bool lateInstantiation)
         {
-            return ShinyUtils.TRAE && entity.type == SpearID;
+            return ShinyOptions.SpearRework && ShinyUtils.TRAE && entity.type == SpearID;
         }
 
         public override void OnHitNPC(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)

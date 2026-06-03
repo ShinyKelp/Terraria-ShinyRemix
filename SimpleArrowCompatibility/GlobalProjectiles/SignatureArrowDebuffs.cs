@@ -18,8 +18,9 @@ namespace ShinyRemix.SimpleArrowCompatibility.GlobalProjectiles
 
         public override bool AppliesToEntity(Projectile entity, bool lateInstantiation)
         {
-            return BowArrowSignatures.ContainsValue(entity.type)
-                || ArrowOverrides.Contains(entity.type);
+            return ShinyOptions.SimpleArrowCompatibility && (
+                BowArrowSignatures.ContainsValue(entity.type)
+                || ArrowOverrides.Contains(entity.type));
         }
 
         public int debuffType = -1;

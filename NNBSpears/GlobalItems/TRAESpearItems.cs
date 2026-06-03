@@ -15,9 +15,8 @@ namespace ShinyRemix.NNBSpears.GlobalItems
 
         public override bool AppliesToEntity(Item item, bool lateInstatiation)
         {
-            return ShinyUtils.TRAE && (NNBSpearUtils.VanillaSpears.Contains(item.type) ||
-                TRAEVanillaSpears.Contains(item.type) ||
-                item.type == NNBSpearUtils.TRAEJoterTridentItemID);
+            return ShinyOptions.SpearRework && ShinyUtils.TRAE && 
+                (NNBSpearUtils.VanillaSpears.Contains(item.type) || TRAEVanillaSpears.Contains(item.type) || item.type == NNBSpearUtils.TRAEJoterTridentItemID);
         }
 
         public override void SetDefaults(Item item)

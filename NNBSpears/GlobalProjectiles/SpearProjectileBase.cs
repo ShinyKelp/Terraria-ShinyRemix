@@ -47,7 +47,7 @@ namespace ShinyRemix.NNBSpears.GlobalProjectiles
 
         public override bool AppliesToEntity(Projectile entity, bool lateInstantiation)
         {
-            return entity.type == SpearID;
+            return entity.type == SpearID && ShinyOptions.SpearRework;
         }
 
         public override void OnSpawn(Projectile projectile, IEntitySource source)

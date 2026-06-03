@@ -18,6 +18,11 @@ namespace ShinyRemix.OverloadMechanic.UI
         protected override int NPC_ID => NPCID.ArmsDealer;
         protected override string ButtonText => "Overload";
 
+        protected override bool CustomLogicCheck()
+        {
+            return ShinyOptions.OverloadMechanic;
+        }
+
         protected override void OnButtonPressed()
         {
             OverloadHeldWeapon();

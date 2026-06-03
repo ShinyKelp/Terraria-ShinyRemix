@@ -16,7 +16,7 @@ namespace ShinyRemix.TerraBladeTree.GlobalProjectiles
         public override bool InstancePerEntity => true;
         public override bool AppliesToEntity(Projectile entity, bool lateInstantiation)
         {
-            return entity.type == ProjectileID.TrueNightsEdge;
+            return ShinyOptions.TerraBladeTree && entity.type == ProjectileID.TrueNightsEdge;
         }
         public override void OnSpawn(Projectile projectile, IEntitySource source)
         {

@@ -14,7 +14,7 @@ namespace ShinyRemix.MeleeArmor
 
         public override bool AppliesToEntity(Item entity, bool lateInstantiation)
         {
-            return base.AppliesToEntity(entity, lateInstantiation);
+            return ShinyOptions.MeleeArmorChanges;
         }
 
         public override void SetDefaults(Item item)

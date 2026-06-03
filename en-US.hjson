@@ -19,5 +19,62 @@ Mods: {
 				Description: Heavily reduced mana cost
 			}
 		}
+
+		Configs: {
+			ShinyConfig: {
+				SpearRework: {
+					Tooltip: ""
+					Label: Spear Rework
+				}
+
+				Headers.General: General Header
+				DisplayName: Shiny Config
+
+				TerraBladeTree: {
+					Label: Terra Blade Tree
+					Tooltip: ""
+				}
+
+				SwordProjectileRates: {
+					Label: Sword Projectile Rates
+					Tooltip: ""
+				}
+
+				SwordProjectileRanges: {
+					Label: Sword Projectile Ranges
+					Tooltip: ""
+				}
+
+				FlailChanges: {
+					Label: Flail Changes
+					Tooltip: ""
+				}
+
+				FrostWeaponChanges: {
+					Label: Frost Weapon Changes
+					Tooltip: ""
+				}
+
+				MeleeArmorChanges: {
+					Label: Melee Armor Changes
+					Tooltip: ""
+				}
+
+				SimpleArrowCompatibility: {
+					Label: Simple Arrow Compatibility
+					Tooltip: ""
+				}
+
+				OverloadMechanic: {
+					Label: Overload Mechanic
+					Tooltip: ""
+				}
+
+				BlessedMechanic: {
+					Label: Blessed Mechanic
+					Tooltip: ""
+				}
+			}
+		}
 	}
 }

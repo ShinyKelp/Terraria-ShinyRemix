@@ -16,7 +16,8 @@ namespace ShinyRemix.FrostWeapons.GlobalItems
     {
         public override bool AppliesToEntity(Item entity, bool lateInstantiation)
         {
-            return entity.type == ItemID.FrostStaff || entity.type == ItemID.Frostbrand || entity.type == ItemID.IceBlade;
+            return ShinyOptions.FrostWeaponChanges &&
+                (entity.type == ItemID.FrostStaff || entity.type == ItemID.Frostbrand || entity.type == ItemID.IceBlade);
         }
         public override void SetDefaults(Item entity)
         {

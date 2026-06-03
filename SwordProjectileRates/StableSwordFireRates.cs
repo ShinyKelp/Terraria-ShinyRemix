@@ -18,7 +18,7 @@ namespace ShinyRemix.SwordProjectileRates
         public static int Swings { get; private set; } = 0;
         public override bool AppliesToEntity(Item entity, bool lateInstantiation)
         {
-            return entity.DamageType == DamageClass.Melee && !entity.noMelee && entity.pick == 0 && entity.axe == 0 && entity.hammer == 0 && entity.useStyle == ItemUseStyleID.Swing && entity.shoot != -1 && !entity.shootsEveryUse;
+            return ShinyOptions.SwordProjectileRates && entity.DamageType == DamageClass.Melee && !entity.noMelee && entity.pick == 0 && entity.axe == 0 && entity.hammer == 0 && entity.useStyle == ItemUseStyleID.Swing && entity.shoot != -1 && !entity.shootsEveryUse;
         }
 
         public override void SetDefaults(Item entity)
@@ -28,6 +28,7 @@ namespace ShinyRemix.SwordProjectileRates
             {
                 case ItemID.IceSickle:
                 case ItemID.DeathSickle:
+                case ItemID.LightsBane:
                     swingsPerShot = 1;
                     break;
                 case ItemID.IceBlade:

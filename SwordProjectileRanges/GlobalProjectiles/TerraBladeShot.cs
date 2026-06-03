@@ -17,7 +17,7 @@ namespace ShinyRemix.SwordProjectileRanges.GlobalProjectiles
         private Vector2 originalVelocity = Vector2.Zero;
         public override bool AppliesToEntity(Projectile entity, bool lateInstantiation)
         {
-            return entity.type == ProjectileID.TerraBlade2Shot;
+            return ShinyOptions.SwordProjectileRanges && entity.type == ProjectileID.TerraBlade2Shot;
         }
 
 

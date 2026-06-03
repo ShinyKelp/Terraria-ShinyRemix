@@ -15,7 +15,7 @@ namespace ShinyRemix.NNBSpears.GlobalProjectiles
         protected virtual string ModSpearName => "";
         public override bool AppliesToEntity(Projectile entity, bool lateInstantiation)
         {
-            return NNBSpearUtils.ModSpearIDs.ContainsKey(ModSpearName) && NNBSpearUtils.ModSpearIDs[ModSpearName] != 1
+            return ShinyOptions.SpearRework && NNBSpearUtils.ModSpearIDs.ContainsKey(ModSpearName) && NNBSpearUtils.ModSpearIDs[ModSpearName] != 1
                 && NNBSpearUtils.ModSpearIDs[ModSpearName] == entity.type;
         }
     }
