@@ -50,7 +50,7 @@ namespace ShinyRemix.BlessedMechanic.GlobalItems
         {
             if (blessed)
             {
-                TooltipLine line = new TooltipLine(Mod, "Blessed", "Consumes no mana, at a cost");
+                TooltipLine line = new TooltipLine(Mod, "Blessed", "Blessed: deals half damage but consumes no mana.");
                 line.OverrideColor = Color.MediumPurple;
                 tooltips.Add(line);
             }
