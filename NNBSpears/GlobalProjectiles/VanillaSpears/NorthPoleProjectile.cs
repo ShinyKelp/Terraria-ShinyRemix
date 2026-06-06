@@ -11,7 +11,9 @@ namespace ShinyRemix.NNBSpears.GlobalProjectiles.VanillaSpears
         protected override float HoldoutRangeMin => 32f;
         protected override bool ShootsProjectile => true;
         protected override int ShotProjectileID => ProjectileID.NorthPoleSpear;
-        protected override float ShotProjectileSpeed => 11.8f;
+        protected override float ShotProjectileSpeed => 19f;
+
+        protected override float ShotProjectileAt => 0.8f;
         protected override bool HasDustParticles => true;
 
         public override bool AppliesToEntity(Projectile entity, bool lateInstantiation)
