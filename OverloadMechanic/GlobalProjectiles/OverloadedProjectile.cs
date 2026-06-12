@@ -26,14 +26,14 @@ namespace ShinyRemix.OverloadMechanic.GlobalProjectiles
                 if(ammoSource.Item.TryGetGlobalItem<OverloadedItem>(out OverloadedItem overIt) && overIt.overloaded)
                 {
                     Item ammo = player.ChooseAmmo(ammoSource.Item);
-                    if(ammo.type == ammoSource.AmmoItemIdUsed && player.CountItem(ammoSource.AmmoItemIdUsed) > 10)
+
+
+
+                    if (ammo.type == ammoSource.AmmoItemIdUsed && player.CountItem(ammoSource.AmmoItemIdUsed) > 10)
                     {
                         if (OverloadUtils.ReplicateAmmoSaveFormula(player, ammoSource.Item, ammo))
                         {
                             player.ConsumeItem(ammoSource.AmmoItemIdUsed);
-                            if (ammo.damage > 30)
-                                player.ConsumeItem(ammoSource.AmmoItemIdUsed);
-                            
                             //Damage increase: +10% of weapon, +80% of ammo.
                             if(ammo.damage < 30)    
                                 projectile.damage += (int)Math.Floor(0.75f * ammo.damage + 0.1f * ammoSource.Item.damage);

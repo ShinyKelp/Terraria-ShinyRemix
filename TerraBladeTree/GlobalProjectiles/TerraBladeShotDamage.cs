@@ -18,7 +18,10 @@ namespace ShinyRemix.TerraBladeTree.GlobalProjectiles
         }
         public override void OnSpawn(Projectile projectile, IEntitySource source)
         {
-            projectile.damage = (int)(projectile.damage * 0.75f);
+            if(ShinyOptions.SwordProjectileRanges)
+                projectile.damage = (int)(projectile.damage * 0.75f);
+            else
+                projectile.damage = (int)(projectile.damage * 0.7f);
             base.OnSpawn(projectile, source);
         }
     }

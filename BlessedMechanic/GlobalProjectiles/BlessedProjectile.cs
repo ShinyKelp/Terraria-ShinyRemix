@@ -1,4 +1,5 @@
-﻿using ShinyRemix.BlessedMechanic.Buffs;
+﻿using Microsoft.Xna.Framework;
+using ShinyRemix.BlessedMechanic.Buffs;
 using ShinyRemix.BlessedMechanic.GlobalItems;    
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Terraria;
 using Terraria.DataStructures;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace ShinyRemix.BlessedMechanic.GlobalProjectiles
@@ -20,7 +22,9 @@ namespace ShinyRemix.BlessedMechanic.GlobalProjectiles
 
         public override bool AppliesToEntity(Projectile entity, bool lateInstantiation)
         {
-            return ShinyOptions.BlessedMechanic && entity.DamageType == DamageClass.Magic;
+            return ShinyOptions.BlessedMechanic && (entity.DamageType == DamageClass.Magic || 
+                entity.type == ProjectileID.BloodCloudMoving || entity.type == ProjectileID.BloodCloudRaining
+                || entity.type == ProjectileID.RainCloudMoving || entity.type == ProjectileID.RainCloudRaining);
         }
 
         public override void OnSpawn(Projectile projectile, IEntitySource source)
@@ -34,10 +38,8 @@ namespace ShinyRemix.BlessedMechanic.GlobalProjectiles
             else if (source is EntitySource_Parent parentSource &&
                 parentSource.Entity is Projectile parentProjectile)
             {
-                var parentGlobal = parentProjectile.GetGlobalProjectile<BlessedProjectile>();
-                if (parentGlobal.blessed)
+                if(parentProjectile.TryGetGlobalProjectile(out BlessedProjectile parentGlobal) && parentGlobal.blessed)
                     blessed = true;
-                
             }
         }
 
@@ -45,14 +47,27 @@ namespace ShinyRemix.BlessedMechanic.GlobalProjectiles
         {
             if (!blessed)
                 return;
-
+            if (target.type == NPCID.TargetDummy)
+                return;
+            
             Player owner = Main.player[projectile.owner];
-            int buffType = ModContent.BuffType<BlessedBuff>();
-            int buffIndex = owner.FindBuffIndex(buffType);
-            if (buffIndex != -1)
-                owner.buffTime[buffIndex] = (int)Math.Min(owner.buffTime[buffIndex] + buffTimerPerHit, maxBuffTimer);
-            else
-                owner.AddBuff(buffType, buffTimerPerHit);
+            Vector2 distance = owner.position - target.position;
+            if (distance.Length() > 1400)
+                return;
+
+            if(owner.HeldItem != null && owner.HeldItem.TryGetGlobalItem(out BlessedItem blessedItem) &&
+                blessedItem.blessed)
+            {
+                int buffType = ModContent.BuffType<BlessedBuff>();
+                int buffIndex = owner.FindBuffIndex(buffType);
+                if (buffIndex != -1)
+                    owner.buffTime[buffIndex] = (int)Math.Min(owner.buffTime[buffIndex] + buffTimerPerHit, maxBuffTimer);
+                else
+                    owner.AddBuff(buffType, buffTimerPerHit);
+                int regenIndex = owner.FindBuffIndex(BuffID.ManaRegeneration);
+                if (regenIndex != -1)
+                    owner.buffTime[regenIndex] = 0;
+            }
         }
     }
 }

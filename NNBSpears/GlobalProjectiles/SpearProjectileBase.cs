@@ -35,6 +35,7 @@ namespace ShinyRemix.NNBSpears.GlobalProjectiles
         protected bool shotProjectile = false;
         //Shockwave effect (hitbox only)
         protected virtual bool HasShockwaveEffect => false;
+        protected virtual bool HasCustomShockwaveEffect => false;
         protected virtual float ExtensionMultiplier => 1f;
 
         //Other
@@ -205,7 +206,7 @@ namespace ShinyRemix.NNBSpears.GlobalProjectiles
             else
             {
                 if (Colliding(projectile, projectile.Hitbox, target.Hitbox).Value)
-                    return null;
+                    return null; //(Let vanilla logic run)
                 else return false;
             }
         }
@@ -221,7 +222,7 @@ namespace ShinyRemix.NNBSpears.GlobalProjectiles
 
         public override bool? Colliding(Projectile projectile, Rectangle projHitbox, Rectangle targetHitbox)
         {
-            if (!HasShockwaveEffect)
+            if (!HasShockwaveEffect && !HasCustomShockwaveEffect)
                 return base.Colliding(projectile, projHitbox, targetHitbox);
             else
             {
@@ -232,7 +233,9 @@ namespace ShinyRemix.NNBSpears.GlobalProjectiles
                 int duration = (int)projectile.localAI[0];
                 if (player.itemAnimation < duration * (1-InitialThrustDuration) && attemptedShockwave)
                 {
-                    return spearHitbox.Intersects(targetHitbox);
+                    if (HasShockwaveEffect && !HasCustomShockwaveEffect)
+                        return spearHitbox.Intersects(targetHitbox);
+                    else return base.Colliding(projectile, projHitbox, targetHitbox);
                 }
                 else
                 {
@@ -249,7 +252,12 @@ namespace ShinyRemix.NNBSpears.GlobalProjectiles
                     {
                         return true;
                     }
-                    else return false;
+                    else
+                    {
+                        if (HasShockwaveEffect && !HasCustomShockwaveEffect)
+                            return false;
+                        else return base.Colliding(projectile, projHitbox, targetHitbox);
+                    }
 
                 }
             }

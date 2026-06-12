@@ -18,8 +18,6 @@ namespace ShinyRemix
                         NNBSpearUtils.ModSpearIDs[modSpearName] = proj.Type;
                     if(stormMod.TryFind("DestroyerFlailProj", out proj))
                         FlailUtils.VaporizerFlailID = proj.Type;
-
-
                 }
             }
             if(ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod))
@@ -46,6 +44,19 @@ namespace ShinyRemix
                 if(traeMod.TryFind<ModProjectile>("FullMoonP", out proj))
                     FlailUtils.FullMoonID = proj.Type;
 
+            }
+
+            if(ModLoader.TryGetMod("Consolaria", out Mod consolariaMod))
+            {
+                ShinyUtils.Consolaria = true;
+                ModProjectile proj;
+                foreach (string modSpearName in NNBSpearUtils.ModSpearIDs.Keys)
+                {
+                    if (consolariaMod.TryFind(modSpearName, out proj))
+                        NNBSpearUtils.ModSpearIDs[modSpearName] = proj.Type;
+                }
+                if (consolariaMod.TryFind<ModItem>("Tonbogiri", out ModItem giriItem))
+                    NNBSpearUtils.TonbogiriItemID = giriItem.Type;
             }
         }
 	}

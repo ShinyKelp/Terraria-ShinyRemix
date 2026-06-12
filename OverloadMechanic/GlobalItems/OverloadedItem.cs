@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
@@ -46,6 +47,25 @@ namespace ShinyRemix.OverloadMechanic.GlobalItems
                 line.OverrideColor = Color.MediumPurple;
                 tooltips.Add(line);
             }
+        }
+
+        public override bool Shoot(Item item, Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        {
+            //Consume extra ammo on main shot to counteract natural ammo reservation chance
+            if (overloaded)
+            {
+                Item ammo = player.ChooseAmmo(item);
+                if (ammo.type == source.AmmoItemIdUsed && player.CountItem(source.AmmoItemIdUsed) > 10)
+                {
+                    if (!OverloadUtils.IsAmmoFreeFromAnimation(player, item, ammo) && lastShotFrames > 0)
+                    {
+                        if (OverloadUtils.ReplicateAmmoSaveFormula(player, source.Item, ammo))
+                            player.ConsumeItem(ammo.type);
+                    }
+                }
+            }
+
+            return base.Shoot(item, player, source, position, velocity, type, damage, knockback);
         }
     }
 }

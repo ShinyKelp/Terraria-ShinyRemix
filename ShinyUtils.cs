@@ -12,5 +12,6 @@ namespace ShinyRemix
         public static bool StormDivers = false;
         public static bool Thorium = false;
         public static bool TRAE = false;
+        public static bool Consolaria = true;
     }
 }

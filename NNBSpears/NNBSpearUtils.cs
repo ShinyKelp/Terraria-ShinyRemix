@@ -23,9 +23,11 @@ internal static class NNBSpearUtils
         { "Daybreak", -1 },
         { "SoTC", -1 },
         { "Javelin", -1 },
-        { "BoneSpear", -1 }
+        { "BoneSpear", -1 },
+        { "TonbogiriSpear", -1 }
     };
     public static List<int> VanillaSpears = new List<int>() { ItemID.Spear, ItemID.Trident, ItemID.TheRottedFork, ItemID.ThunderSpear, ItemID.DarkLance, ItemID.Swordfish, ItemID.ObsidianSwordfish, ItemID.CobaltNaginata, ItemID.PalladiumPike, ItemID.MythrilHalberd, ItemID.OrichalcumHalberd, ItemID.AdamantiteGlaive, ItemID.TitaniumTrident, ItemID.Gungnir, ItemID.ChlorophytePartisan, ItemID.NorthPole, ItemID.MonkStaffT2, ItemID.MushroomSpear };
     public static int TRAEJoterTridentItemID = -1;
+    public static int TonbogiriItemID = -1;
 
 }

@@ -31,7 +31,7 @@ namespace ShinyRemix.SwordProjectileRanges.GlobalProjectiles
             projectile.velocity *= 34f;
             projectile.timeLeft = 23;
             projectile.alpha = 100;
-            projectile.damage = (int)(projectile.damage * 0.77f);
+            projectile.damage = (int)(projectile.damage * 0.8f);
         }
 
         public override bool PreAI(Projectile projectile)
