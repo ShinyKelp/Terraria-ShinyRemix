@@ -14,11 +14,12 @@ using Terraria.ModLoader;
 
 namespace ShinyRemix.Flails.GlobalProjectiles
 {
-    public class TraeFlailProjectile : BaseFlailProjectile
+    //Will become obsolete in 1.4.5
+    public class TraeFlairon : BaseFlailProjectile
     {
         public override bool AppliesToEntity(Projectile entity, bool lateInstantiation)
         {
-            return ShinyOptions.FlailChanges && ShinyUtils.TRAE && entity.type == FlailUtils.FullMoonID;
+            return ShinyOptions.FlailChanges && ShinyUtils.TRAE && entity.type == ProjectileID.Flairon;
         }
     }
 }

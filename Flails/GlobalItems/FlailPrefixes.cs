@@ -29,14 +29,14 @@ namespace ShinyRemix.Flails.GlobalItems
 
         public override bool AppliesToEntity(Item entity, bool lateInstantiation)
         {
-            return ShinyOptions.FlailChanges && VanillaFlailIDs.Contains(entity.type) && !ShinyUtils.TRAE;
+            return ShinyOptions.FlailChanges && (VanillaFlailIDs.Contains(entity.type)
+                || (ShinyUtils.TRAE && entity.type == ItemID.Flairon));
         }
+
 
         public override void SetDefaults(Item entity)
         {
-            base.SetDefaults(entity);
-            if(VanillaFlailIDs.Contains(entity.type))
-                PrefixLegacy.ItemSets.SwordsHammersAxesPicks[entity.type] = true;
+            PrefixLegacy.ItemSets.SwordsHammersAxesPicks[entity.type] = true;
         }
     }
 }
