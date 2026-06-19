@@ -23,7 +23,8 @@ namespace ShinyRemix.SimpleArrowCompatibility
             ProjectileID.BoneArrow,
             ProjectileID.ShadowFlameArrow,
             ProjectileID.PulseBolt,
-            ProjectileID.BloodArrow
+            ProjectileID.BloodArrow,
+            ProjectileID.DD2BetsyArrow
         };
 
         public static readonly Dictionary<int, int> ArrowProjDebuffs = new()

@@ -11,12 +11,20 @@ Mods: {
 			FrostBlastMagic.DisplayName: Frost Blast Magic
 			FrostBlastMelee.DisplayName: Frost Blast Melee
 			FlailExtensionProj.DisplayName: Flail Extension Proj
+			ClingerStaffPulse.DisplayName: Clinger Staff Pulse
+			ClingerStaffFireSpit.DisplayName: Clinger Staff Fire Spit
+			FlyingKnifeDuplicate.DisplayName: Flying Knife Duplicate
 		}
 
 		Buffs: {
 			BlessedBuff: {
 				DisplayName: Blessed
 				Description: Heavily reduced mana cost
+			}
+
+			FetidBuff: {
+				DisplayName: Fetid Buff
+				Description: Mods.ShinyRemix.Buffs.FetidBuff.Description
 			}
 		}
 
@@ -72,6 +80,11 @@ Mods: {
 
 				BlessedMechanic: {
 					Label: Blessed Mechanic
+					Tooltip: ""
+				}
+
+				PostMechMimics: {
+					Label: Post Mech Mimics
 					Tooltip: ""
 				}
 			}

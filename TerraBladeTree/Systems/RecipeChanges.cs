@@ -14,6 +14,8 @@ namespace ShinyRemix.TerraBladeTree.Systems
     {
         public override void PostAddRecipes()
         {
+            if (!ShinyOptions.TerraBladeTree)
+                return;
             foreach (Recipe recipe in Main.recipe)
             {
                 switch (recipe.createItem.type)
@@ -62,6 +64,8 @@ namespace ShinyRemix.TerraBladeTree.Systems
         }
         public override void AddRecipes()
         {
+            if (!ShinyOptions.TerraBladeTree)
+                return;
             //Alternative terra blade recipe for classic worlds
             Recipe recipe = Recipe.Create(ItemID.TerraBlade);
             recipe.AddIngredient(ItemID.BrokenHeroSword);

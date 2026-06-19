@@ -24,6 +24,15 @@ namespace ShinyRemix.TerraBladeTree.GlobalItems
                 case ItemID.TerraBlade:
                     entity.damage = 120;    //85 > 120. Requires Golem + Empress. + Projectile deals 80% dmg (96)
                     break;
+                case ItemID.LightsBane:
+                    entity.damage -= 1;     //16 > 15
+                    entity.crit += 11;      //Crits are cool with Light's Bane, increasing projectile size.
+                                            //Trade 6% damage for 11% crit
+                    break;
+                case ItemID.BloodButcherer:
+                    entity.damage += 2;
+                    entity.scale += 0.05f;  //Making the Butcherer a litle better.
+                    break;
                 case ItemID.BladeofGrass:
                     entity.useAnimation = 30;
                     entity.useTime = 30;    //20 > 30.
