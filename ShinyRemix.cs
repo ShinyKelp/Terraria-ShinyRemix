@@ -1,3 +1,4 @@
+using MonoMod.RuntimeDetour;
 using ShinyRemix.Flails;
 using ShinyRemix.NNBSpears;
 using Terraria.ModLoader;
@@ -6,6 +7,13 @@ namespace ShinyRemix
 {
 	public class ShinyRemix : Mod
 	{
+        static ILHook ShieldHook;
+
+        public override void Load()
+        {
+            ShieldHook = new ILHook(typeof(Terraria.Player).GetMethod("ItemCheck_ManageRightClickFeatures_ShieldRaise"), SwordParries.SwordParriesIL.EnableSwordParries);
+        }
+
 		public override void PostSetupContent()
 		{
             if (ModLoader.TryGetMod("StormDiversMod", out Mod stormMod))

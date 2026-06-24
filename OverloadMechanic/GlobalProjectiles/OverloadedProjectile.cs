@@ -26,9 +26,6 @@ namespace ShinyRemix.OverloadMechanic.GlobalProjectiles
                 if(ammoSource.Item.TryGetGlobalItem<OverloadedItem>(out OverloadedItem overIt) && overIt.overloaded)
                 {
                     Item ammo = player.ChooseAmmo(ammoSource.Item);
-
-
-
                     if (ammo.type == ammoSource.AmmoItemIdUsed && player.CountItem(ammoSource.AmmoItemIdUsed) > 10)
                     {
                         if (OverloadUtils.ReplicateAmmoSaveFormula(player, ammoSource.Item, ammo))

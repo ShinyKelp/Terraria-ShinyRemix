@@ -35,6 +35,10 @@ namespace ShinyRemix
 
         [ReloadRequired]
         [DefaultValue(true)]
+        public bool SwordParries = true;
+
+        [ReloadRequired]
+        [DefaultValue(true)]
         public bool FlailChanges = true;
 
         [ReloadRequired]
@@ -68,6 +72,7 @@ namespace ShinyRemix
         public static bool TerraBladeTree => GetInstance<ShinyConfig>().TerraBladeTree;
         public static bool SwordProjectileRates => GetInstance<ShinyConfig>().SwordProjectileRates;
         public static bool SwordProjectileRanges => GetInstance<ShinyConfig>().SwordProjectileRanges;
+        public static bool SwordParries => GetInstance<ShinyConfig>().SwordParries;
         public static bool FlailChanges => GetInstance<ShinyConfig>().FlailChanges;
         public static bool FrostWeaponChanges => GetInstance<ShinyConfig>().FrostWeaponChanges;
         public static bool MeleeArmorChanges => GetInstance<ShinyConfig>().MeleeArmorChanges;

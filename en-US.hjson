@@ -26,6 +26,11 @@ Mods: {
 				DisplayName: Fetid Buff
 				Description: Mods.ShinyRemix.Buffs.FetidBuff.Description
 			}
+
+			ParryStrikeExtension: {
+				Description: Mods.ShinyRemix.Buffs.ParryStrikeExtension.Description
+				DisplayName: Parry Strike Extension
+			}
 		}
 
 		Configs: {
@@ -85,6 +90,11 @@ Mods: {
 
 				PostMechMimics: {
 					Label: Post Mech Mimics
+					Tooltip: ""
+				}
+
+				SwordParries: {
+					Label: Sword Parries
 					Tooltip: ""
 				}
 			}
