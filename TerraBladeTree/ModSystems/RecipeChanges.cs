@@ -8,7 +8,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ShinyRemix.TerraBladeTree.Systems
+namespace ShinyRemix.TerraBladeTree.ModSystems
 {
     public class RecipeChanges : ModSystem
     {
@@ -50,14 +50,6 @@ namespace ShinyRemix.TerraBladeTree.Systems
 
                     case ItemID.TrueNightsEdge:
                         recipe.AddIngredient(ModContent.ItemType<MoonEssence>(), 10);
-                        break;
-
-                    case ItemID.FieryGreatsword:
-                        recipe.AddIngredient(ItemID.Bone, 10);
-                        break;
-
-                    case ItemID.BladeofGrass:
-                        recipe.AddIngredient(ItemID.BeeWax, 6);
                         break;
                 }
             }

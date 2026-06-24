@@ -97,6 +97,11 @@ Mods: {
 					Label: Sword Parries
 					Tooltip: ""
 				}
+
+				OldManQuest: {
+					Tooltip: ""
+					Label: Old Man Quest
+				}
 			}
 		}
 	}

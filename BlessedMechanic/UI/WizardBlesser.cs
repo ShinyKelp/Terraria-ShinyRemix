@@ -22,10 +22,6 @@ namespace ShinyRemix.BlessedMechanic.UI
         }
         protected override void OnButtonPressed()
         {
-            BlessHeldWeapon();
-        }
-        private void BlessHeldWeapon()
-        {
             Player player = Main.LocalPlayer;
             Item item = player.HeldItem;
 
