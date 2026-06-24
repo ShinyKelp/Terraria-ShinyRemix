@@ -68,6 +68,10 @@ namespace ShinyRemix
         [ReloadRequired]
         [DefaultValue(true)]
         public bool OldManQuest = true;
+
+        [ReloadRequired]
+        [DefaultValue(true)]
+        public bool LifestealRework = true;
     }
 
     public static class ShinyOptions
@@ -85,5 +89,6 @@ namespace ShinyRemix
         public static bool BlessedMechanic => GetInstance<ShinyConfig>().BlessedMechanic;
         public static bool PostMechMimics => GetInstance<ShinyConfig>().PostMechMimics;
         public static bool OldManQuest => GetInstance<ShinyConfig>().OldManQuest;
+        public static bool LifestealRework => GetInstance<ShinyConfig>().LifestealRework;
     }
 }

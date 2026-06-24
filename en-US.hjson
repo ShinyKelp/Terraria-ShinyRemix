@@ -19,24 +19,29 @@ Mods: {
 		Buffs: {
 			BlessedBuff: {
 				DisplayName: Blessed
-				Description: Heavily reduced mana cost
+				Description: Heavily reduced mana cost + mana regen
 			}
 
 			FetidBuff: {
 				DisplayName: Fetid Buff
-				Description: Mods.ShinyRemix.Buffs.FetidBuff.Description
+				Description: Defense increased
 			}
 
 			ParryStrikeExtension: {
-				Description: Mods.ShinyRemix.Buffs.ParryStrikeExtension.Description
+				Description: Melee damage increased
 				DisplayName: Parry Strike Extension
+			}
+
+			LifestealBuff: {
+				Description: Life regen increased
+				DisplayName: Lifesteal Regen
 			}
 		}
 
 		Configs: {
 			ShinyConfig: {
 				SpearRework: {
-					Tooltip: ""
+					Tooltip: Rework all spear weapons
 					Label: Spear Rework
 				}
 
@@ -45,62 +50,67 @@ Mods: {
 
 				TerraBladeTree: {
 					Label: Terra Blade Tree
-					Tooltip: ""
+					Tooltip: Changes and tweaks to all swords from the Terra Blade tree
 				}
 
 				SwordProjectileRates: {
 					Label: Sword Projectile Rates
-					Tooltip: ""
+					Tooltip: Projectile fire rates from swords will scale with melee speed
 				}
 
 				SwordProjectileRanges: {
 					Label: Sword Projectile Ranges
-					Tooltip: ""
+					Tooltip: Some sword projectiles will have their range reduced, for trade-offs
 				}
 
 				FlailChanges: {
 					Label: Flail Changes
-					Tooltip: ""
+					Tooltip: Tweaks for all flails
 				}
 
 				FrostWeaponChanges: {
 					Label: Frost Weapon Changes
-					Tooltip: ""
+					Tooltip: Rework for Ice Blade, Frostbrand and Frost Staff
 				}
 
 				MeleeArmorChanges: {
 					Label: Melee Armor Changes
-					Tooltip: ""
+					Tooltip: Melee armor gives less defense but more offense
 				}
 
 				SimpleArrowCompatibility: {
 					Label: Simple Arrow Compatibility
-					Tooltip: ""
+					Tooltip: Arrows that only apply a debuff will synergize with special bow projectiles like wooden arrows
 				}
 
 				OverloadMechanic: {
 					Label: Overload Mechanic
-					Tooltip: ""
+					Tooltip: Increase your ranger damage at the cost of extra ammo
 				}
 
 				BlessedMechanic: {
 					Label: Blessed Mechanic
-					Tooltip: ""
+					Tooltip: Bless a magic weapon to reduce damage but greatly improve mana management
 				}
 
 				PostMechMimics: {
 					Label: Post Mech Mimics
-					Tooltip: ""
+					Tooltip: Biome mimics are post-mech but their weapons are a lot better
 				}
 
 				SwordParries: {
 					Label: Sword Parries
-					Tooltip: ""
+					Tooltip: All swords can parry like Brand of the Inferno
 				}
 
 				OldManQuest: {
-					Tooltip: ""
+					Tooltip: The Old Man can give you a dungeon weapon before defeating Skeletron
 					Label: Old Man Quest
+				}
+
+				LifestealRework: {
+					Label: Lifesteal Rework
+					Tooltip: Changes lifesteal mechanic to be more balanced and reward proactive use
 				}
 			}
 		}
