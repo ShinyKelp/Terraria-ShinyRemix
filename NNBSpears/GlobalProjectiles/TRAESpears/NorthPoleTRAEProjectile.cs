@@ -13,6 +13,7 @@ namespace ShinyRemix.NNBSpears.GlobalProjectiles.TRAESpears
         protected override float HoldoutRangeMin => 32f;
         protected override bool ShootsProjectile => true;
         protected override bool HasDustParticles => true;
+        protected override bool ForceManualCollisionDetection => true;
 
         public override bool AppliesToEntity(Projectile entity, bool lateInstantiation)
         {

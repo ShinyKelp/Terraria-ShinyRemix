@@ -32,6 +32,7 @@ namespace ShinyRemix.NNBSpears.GlobalProjectiles
         protected virtual int ShotProjectileID => ProjectileID.SporeCloud;
         protected virtual float ShotProjectileAt => 1f-InitialThrustDuration; //1f: Shot immediately. 0f: Shot at the end of projectile lifespan.
         protected virtual float ShotProjectileSpeed => 3f;
+        protected virtual float ShotProjectileScale => 1f;
         protected bool shotProjectile = false;
         //Shockwave effect (hitbox only)
         protected virtual bool HasShockwaveEffect => false;
@@ -44,7 +45,9 @@ namespace ShinyRemix.NNBSpears.GlobalProjectiles
 
         protected int[] hitCooldown = new int[Main.maxNPCs];
 
-        protected virtual bool UsesCustomHitCooldown => false;
+        protected virtual bool UsesCustomHitCooldown => false;  //Implemented because some spears would hit every frame otherwise.
+                                                                //Bug might instead be fixed by ensuring no spear uses static immunity frames?
+        protected virtual bool ForceManualCollisionDetection => false;  //Some spears' natural hitboxes are greatly offset from their sprites, often due to drawing fixes.
 
         public override bool AppliesToEntity(Projectile entity, bool lateInstantiation)
         {
@@ -60,14 +63,15 @@ namespace ShinyRemix.NNBSpears.GlobalProjectiles
             else if (ShinyUtils.TRAE && player.GetModPlayer<ShinyMeleeScale>().meleeScaleGlove)
                 projectile.scale += 0.2f;
 
+            
             //Store duration for stable use in AI
             projectile.localAI[0] = player.itemAnimationMax;
-
             projectile.timeLeft = (int)projectile.localAI[0];
 
             //Immunity frames scale with item speed, ensuring two hits per thrust but with custom timing.
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = (int)Math.Ceiling(projectile.localAI[0] * 0.5f);
+            projectile.usesIDStaticNPCImmunity = false;
             if(ShinyUtils.TRAE && player.HeldItem != null && player.HeldItem.UseSound == null)
                 SoundEngine.PlaySound(SoundID.Item1, projectile.Center);
         }
@@ -149,7 +153,7 @@ namespace ShinyRemix.NNBSpears.GlobalProjectiles
             if (!shotProjectile && (float)player.itemAnimation <= Math.Max(ShotProjectileAt * (float)projectile.localAI[0], 1f))
             {
                 Projectile proj = Projectile.NewProjectileDirect(projectile.GetSource_FromThis(), projectile.Center, projectile.velocity * ShotProjectileSpeed, ShotProjectileID, projectile.damage, projectile.knockBack, Main.player[projectile.owner].whoAmI);
-                proj.scale = projectile.scale;
+                proj.scale = projectile.scale * ShotProjectileScale;
                 shotProjectile = true;
             }
         }
@@ -201,11 +205,12 @@ namespace ShinyRemix.NNBSpears.GlobalProjectiles
                 if (hitCooldown[target.whoAmI] > 0)
                     return false;
             }
-            if (!HasShockwaveEffect)
+            if (!HasShockwaveEffect && !ForceManualCollisionDetection)
                 return base.CanHitNPC(projectile, target);
             else
             {
-                if (Colliding(projectile, projectile.Hitbox, target.Hitbox).Value)
+                bool? res = Colliding(projectile, projectile.Hitbox, target.Hitbox);
+                if (res.HasValue && res.Value)
                     return null; //(Let vanilla logic run)
                 else return false;
             }
@@ -220,9 +225,11 @@ namespace ShinyRemix.NNBSpears.GlobalProjectiles
 
         private bool attemptedShockwave = false;
 
+        //To-Do: Reorganize colliding function to accomodate for vanilla shockwave, modded shockwave and forced manual detection.
+        //It's currently a mess.
         public override bool? Colliding(Projectile projectile, Rectangle projHitbox, Rectangle targetHitbox)
         {
-            if (!HasShockwaveEffect && !HasCustomShockwaveEffect)
+            if (!HasShockwaveEffect && !HasCustomShockwaveEffect && !ForceManualCollisionDetection)
                 return base.Colliding(projectile, projHitbox, targetHitbox);
             else
             {
@@ -230,10 +237,16 @@ namespace ShinyRemix.NNBSpears.GlobalProjectiles
                 if (properSpearHitbox.Width == 0)
                     spearHitbox = projHitbox;
 
+                if (ForceManualCollisionDetection)
+                {
+                    return spearHitbox.Intersects(targetHitbox);
+                }
+
                 int duration = (int)projectile.localAI[0];
+
                 if (player.itemAnimation < duration * (1-InitialThrustDuration) && attemptedShockwave)
                 {
-                    if (HasShockwaveEffect && !HasCustomShockwaveEffect)
+                    if ((HasShockwaveEffect || ForceManualCollisionDetection) && !HasCustomShockwaveEffect)
                         return spearHitbox.Intersects(targetHitbox);
                     else return base.Colliding(projectile, projHitbox, targetHitbox);
                 }

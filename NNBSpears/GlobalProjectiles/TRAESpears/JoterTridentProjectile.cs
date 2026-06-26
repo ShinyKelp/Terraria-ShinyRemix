@@ -11,8 +11,10 @@ namespace ShinyRemix.NNBSpears.GlobalProjectiles.TRAESpears
         protected override float HoldoutRangeMax => 160f;
         protected override float HoldoutRangeMin => 36f;
         protected override string ModSpearName => "JoterTridentSpear";
+        protected override bool ForceManualCollisionDetection => true;
         public override bool PreDraw(Projectile projectile, ref Color lightColor)
         {
+            DrawHitbox(); 
             if (projectile.spriteDirection == -1)
                 projectile.rotation = projectile.velocity.ToRotation() + MathHelper.PiOver2 + MathHelper.PiOver4;
             return base.PreDraw(projectile, ref lightColor);

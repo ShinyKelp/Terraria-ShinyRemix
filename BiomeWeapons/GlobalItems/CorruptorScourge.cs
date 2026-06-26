@@ -8,31 +8,33 @@ using Terraria.GameContent.Prefixes;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ShinyRemix.PostMechMimics.GlobalItems
+namespace ShinyRemix.BiomeWeapons.GlobalItems
 {
-    public class ChainGuillotines : GlobalItem
+    public class CorruptorScourge : GlobalItem
     {
         public override bool AppliesToEntity(Item entity, bool lateInstantiation)
         {
-            return ShinyOptions.PostMechMimics && entity.type == ItemID.ChainGuillotines;
+            return ShinyOptions.BiomeKeyWeapons && entity.type == ItemID.ScourgeoftheCorruptor;
         }
-
         public override void SetStaticDefaults()
         {
-            PrefixLegacy.ItemSets.SwordsHammersAxesPicks[ItemID.ChainGuillotines] = true;
+            PrefixLegacy.ItemSets.SwordsHammersAxesPicks[ItemID.ScourgeoftheCorruptor] = true;
         }
-
         public override void SetDefaults(Item entity)
         {
-            entity.useTime = entity.useAnimation = 20;
             entity.DamageType = DamageClass.Melee;
-            entity.damage -= 5;
+            entity.useTime = entity.useAnimation = 26;
+            if (ShinyUtils.TRAE)
+            {
+                entity.useTime = entity.useAnimation = 33;
+                entity.damage -= 5;
+            }
+            PrefixLegacy.ItemSets.SwordsHammersAxesPicks[entity.type] = true;
         }
-
         public override bool AllowPrefix(Item item, int pre)
         {
             ModPrefix prefix = PrefixLoader.GetPrefix(pre);
-            if(prefix == null)
+            if (prefix == null)
             {
                 return true;
             }
@@ -40,7 +42,7 @@ namespace ShinyRemix.PostMechMimics.GlobalItems
             damageMult = knockbackMult = useTimeMult = scaleMult = shotSpeedMult = manaUseMult = 1f;
             int critBonus = 4;
             prefix.SetStats(ref damageMult, ref knockbackMult, ref useTimeMult, ref scaleMult, ref shotSpeedMult, ref manaUseMult, ref critBonus);
-            return scaleMult == 1f;
+            return useTimeMult == 1f;
         }
     }
 }

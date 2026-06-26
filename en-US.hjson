@@ -36,6 +36,16 @@ Mods: {
 				Description: Life regen increased
 				DisplayName: Lifesteal Regen
 			}
+
+			PiranhaBite: {
+				Description: Mods.ShinyRemix.Buffs.PiranhaBite.Description
+				DisplayName: Piranha Bite
+			}
+
+			CorruptorBuff: {
+				Description: Mods.ShinyRemix.Buffs.CorruptorBuff.Description
+				DisplayName: Corruptor Buff
+			}
 		}
 
 		Configs: {
@@ -111,6 +121,11 @@ Mods: {
 				LifestealRework: {
 					Label: Lifesteal Rework
 					Tooltip: Changes lifesteal mechanic to be more balanced and reward proactive use
+				}
+
+				BiomeKeyWeapons: {
+					Tooltip: ""
+					Label: Biome Key Weapons
 				}
 			}
 		}
