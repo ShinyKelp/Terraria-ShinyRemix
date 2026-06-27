@@ -47,9 +47,10 @@ namespace ShinyRemix.BiomeWeapons.GlobalNPCs
                 }
                 if (Main.rand.Next(frequency) == 0)
                 {
-                    Dust.NewDust(npc.position, npc.width, npc.height, DustID.CrimsonSpray, 0, 0, 0, default(Color), scale);
+                    int id = Dust.NewDust(npc.position, npc.width, npc.height, DustID.CrimsonSpray, 0, 0, 0, default(Color), scale);
+                    Main.dust[id].noGravity = false;
                 }
-                drawColor = Color.OrangeRed;
+                drawColor = Color.Lerp(drawColor, Color.OrangeRed, 0.35f);
             }
         }
     }

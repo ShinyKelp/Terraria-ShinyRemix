@@ -17,7 +17,7 @@ namespace ShinyRemix.BiomeWeapons.GlobalItems
         }
         public override void SetDefaults(Item entity)
         {
-            entity.damage -= 10;
+            entity.damage = 36; // Should change to -4 dmg after 1.4.5 buff.
         }
     }
 }

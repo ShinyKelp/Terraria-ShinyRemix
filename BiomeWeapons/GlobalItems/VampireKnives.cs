@@ -10,37 +10,30 @@ using Terraria.ModLoader;
 
 namespace ShinyRemix.BiomeWeapons.GlobalItems
 {
-    public class CorruptorScourge : GlobalItem
+    internal class VampireKnives : GlobalItem
     {
         public override bool AppliesToEntity(Item entity, bool lateInstantiation)
         {
-            return ShinyOptions.BiomeKeyWeapons && entity.type == ItemID.ScourgeoftheCorruptor;
+            return ShinyOptions.BiomeKeyWeapons && entity.type == ItemID.VampireKnives;
         }
         public override void SetDefaults(Item entity)
         {
+            entity.useTime = entity.useAnimation = 22;
             entity.DamageType = DamageClass.Melee;
-            entity.useTime = entity.useAnimation = 26;
-            if (ShinyUtils.TRAE)
-            {
-                entity.useTime = entity.useAnimation = 33;
-                entity.damage -= 5;
-            }
-            PrefixLegacy.ItemSets.SwordsHammersAxesPicks[entity.type] = true;
         }
+
         public override void SetStaticDefaults()
         {
-            PrefixLegacy.ItemSets.SwordsHammersAxesPicks[ItemID.ScourgeoftheCorruptor] = true;
+            if(ShinyOptions.BiomeKeyWeapons)
+                PrefixLegacy.ItemSets.SwordsHammersAxesPicks[ItemID.VampireKnives] = true;
         }
         public override bool AllowPrefix(Item item, int pre)
         {
-            if(ShinyUtils.TRAE)
-                return base.AllowPrefix(item, pre);
             if (ShinyUtils.SizePrefixes.Contains(pre))
                 return false;
             ModPrefix prefix = PrefixLoader.GetPrefix(pre);
             if (prefix == null)
                 return true;
-            
             float damageMult, knockbackMult, useTimeMult, scaleMult, shotSpeedMult, manaUseMult;
             damageMult = knockbackMult = useTimeMult = scaleMult = shotSpeedMult = manaUseMult = 1f;
             int critBonus = 4;

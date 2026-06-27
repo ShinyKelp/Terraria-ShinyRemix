@@ -92,7 +92,7 @@ namespace ShinyRemix
         public static bool OverloadMechanic => GetInstance<ShinyConfig>().OverloadMechanic;
         public static bool BlessedMechanic => GetInstance<ShinyConfig>().BlessedMechanic;
         public static bool PostMechMimics => GetInstance<ShinyConfig>().PostMechMimics;
-        public static bool BiomeKeyWeapons => GetInstance<ShinyConfig>().PostMechMimics;
+        public static bool BiomeKeyWeapons => GetInstance<ShinyConfig>().BiomeKeyWeapons;
         public static bool OldManQuest => GetInstance<ShinyConfig>().OldManQuest;
         public static bool LifestealRework => GetInstance<ShinyConfig>().LifestealRework;
     }

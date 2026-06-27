@@ -20,7 +20,7 @@ namespace ShinyRemix.NNBSpears.GlobalProjectiles.VanillaSpears
 
         public override void OnSpawn(Projectile projectile, IEntitySource source)
         {
-            projectile.timeLeft = 26;
+            projectile.timeLeft = 30;
             projectile.penetrate = -1;
             base.OnSpawn(projectile, source);
         }

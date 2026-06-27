@@ -31,11 +31,12 @@ namespace ShinyRemix.PostMechMimics.GlobalItems
 
         public override bool AllowPrefix(Item item, int pre)
         {
+            if (ShinyUtils.SizePrefixes.Contains(pre))
+                return false;
             ModPrefix prefix = PrefixLoader.GetPrefix(pre);
             if(prefix == null)
-            {
                 return true;
-            }
+            
             float damageMult, knockbackMult, useTimeMult, scaleMult, shotSpeedMult, manaUseMult;
             damageMult = knockbackMult = useTimeMult = scaleMult = shotSpeedMult = manaUseMult = 1f;
             int critBonus = 4;
