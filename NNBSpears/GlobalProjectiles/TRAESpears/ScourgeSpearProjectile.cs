@@ -32,7 +32,6 @@ namespace ShinyRemix.NNBSpears.GlobalProjectiles.TRAESpears
         }
         public override bool PreDraw(Projectile projectile, ref Color lightColor)
         {
-            DrawHitbox();
             if (projectile.spriteDirection == -1)
                 projectile.rotation = projectile.velocity.ToRotation() + MathHelper.PiOver2 + MathHelper.PiOver4;
             return base.PreDraw(projectile, ref lightColor);

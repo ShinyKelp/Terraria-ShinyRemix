@@ -17,18 +17,18 @@ namespace ShinyRemix.LifestealRework.ModPlayers
         const float MaxLifeSteal = 60f;
         const float targetLifeStealPerTick = 0.25f;
         float previousLifeSteal = -1;
+        float lifeToDetract = 0f;
         public override void PostUpdate()
         {
             if (ShinyOptions.LifestealRework)
             {
                 if (previousLifeSteal > 0)
                 {
-                    float lifeGained = previousLifeSteal - Player.lifeSteal;
-                    if(lifeGained > 0.3f)
+                    if(lifeToDetract > 0.3f)
                     {
-                        lifeGained -= 0.3f;
-                        Player.statLife = (int)Math.Max(1, Player.statLife - (int)Math.Floor(lifeGained));
+                        Player.statLife = (int)Math.Max(1, Player.statLife - (int)Math.Floor(lifeToDetract - 0.3f));
                     }
+                    lifeToDetract = previousLifeSteal - Player.lifeSteal; //Delaying the life removal by one frame to allow the game to actually do the lifesteal healing first.
                 }
                 if (!ShinyUtils.TRAE)
                 {
