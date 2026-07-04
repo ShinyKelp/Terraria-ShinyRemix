@@ -31,7 +31,7 @@ namespace ShinyRemix
 
         [ReloadRequired]
         [DefaultValue(true)]
-        public bool SwordProjectileRanges = true;
+        public bool SwordProjectileReworks = true;
 
         [ReloadRequired]
         [DefaultValue(true)]
@@ -43,7 +43,7 @@ namespace ShinyRemix
 
         [ReloadRequired]
         [DefaultValue(true)]
-        public bool FrostWeaponChanges = true;
+        public bool Misc = true;
 
         [ReloadRequired]
         [DefaultValue(true)]
@@ -83,10 +83,9 @@ namespace ShinyRemix
         public static bool SpearRework => GetInstance<ShinyConfig>().SpearRework;
         public static bool TerraBladeTree => GetInstance<ShinyConfig>().TerraBladeTree;
         public static bool SwordProjectileRates => GetInstance<ShinyConfig>().SwordProjectileRates;
-        public static bool SwordProjectileRanges => GetInstance<ShinyConfig>().SwordProjectileRanges;
+        public static bool SwordProjectileReworks => GetInstance<ShinyConfig>().SwordProjectileReworks;
         public static bool SwordParries => GetInstance<ShinyConfig>().SwordParries;
         public static bool FlailChanges => GetInstance<ShinyConfig>().FlailChanges;
-        public static bool FrostWeaponChanges => GetInstance<ShinyConfig>().FrostWeaponChanges;
         public static bool MeleeArmorChanges => GetInstance<ShinyConfig>().MeleeArmorChanges;
         public static bool SimpleArrowCompatibility => GetInstance<ShinyConfig>().SimpleArrowCompatibility;
         public static bool OverloadMechanic => GetInstance<ShinyConfig>().OverloadMechanic;
@@ -95,5 +94,7 @@ namespace ShinyRemix
         public static bool BiomeKeyWeapons => GetInstance<ShinyConfig>().BiomeKeyWeapons;
         public static bool OldManQuest => GetInstance<ShinyConfig>().OldManQuest;
         public static bool LifestealRework => GetInstance<ShinyConfig>().LifestealRework;
+        public static bool Misc => GetInstance<ShinyConfig>().Misc;
+
     }
 }

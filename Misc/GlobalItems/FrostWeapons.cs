@@ -1,25 +1,28 @@
-﻿using ShinyRemix.SwordProjectileRates;
+﻿using Microsoft.Xna.Framework;
+using ShinyRemix.SwordProjectileRates;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ShinyRemix.SwordProjectileRanges.GlobalItems
+namespace ShinyRemix.Misc.GlobalItems
 {
-    public class InfluxWaver : GlobalItem
+    public class FrostWeapons : GlobalItem
     {
         public override bool AppliesToEntity(Item entity, bool lateInstantiation)
         {
-            return ShinyOptions.SwordProjectileRanges && entity.type == ItemID.InfluxWaver;
+            return ShinyOptions.Misc &&
+                entity.type == ItemID.FrostStaff;
         }
         public override void SetDefaults(Item entity)
         {
-            base.SetDefaults(entity);
-            entity.damage = 130;
+            entity.useTime = entity.useAnimation = 24;
+            entity.damage += 4;
         }
     }
 }

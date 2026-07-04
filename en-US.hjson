@@ -68,9 +68,9 @@ Mods: {
 					Tooltip: Projectile fire rates from swords will scale with melee speed
 				}
 
-				SwordProjectileRanges: {
-					Label: Sword Projectile Ranges
-					Tooltip: Some sword projectiles will have their range reduced, for trade-offs
+				SwordProjectileReworks: {
+					Label: Sword Projectile Reworks
+					Tooltip: Changes a bunch of projectiles shot by swords, making them more unique.
 				}
 
 				FlailChanges: {
@@ -78,9 +78,9 @@ Mods: {
 					Tooltip: Tweaks for all flails
 				}
 
-				FrostWeaponChanges: {
-					Label: Frost Weapon Changes
-					Tooltip: Rework for Ice Blade, Frostbrand and Frost Staff
+				Misc: {
+					Label: Misc changes
+					Tooltip: Random changes I didn't bundle together.
 				}
 
 				MeleeArmorChanges: {

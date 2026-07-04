@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace ShinyRemix.FrostWeapons.ModDusts
+namespace ShinyRemix.Common.ModDusts
 {
     public class BlizzardDust : ModDust
     {

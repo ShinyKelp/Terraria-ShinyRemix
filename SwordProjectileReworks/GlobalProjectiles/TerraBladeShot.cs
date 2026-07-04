@@ -8,7 +8,7 @@ using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ShinyRemix.SwordProjectileRanges.GlobalProjectiles
+namespace ShinyRemix.SwordProjectileReworks.GlobalProjectiles
 {
     public class TerraBladeShot : GlobalProjectile
     {
@@ -17,7 +17,7 @@ namespace ShinyRemix.SwordProjectileRanges.GlobalProjectiles
         private Vector2 originalVelocity = Vector2.Zero;
         public override bool AppliesToEntity(Projectile entity, bool lateInstantiation)
         {
-            return ShinyOptions.SwordProjectileRanges && entity.type == ProjectileID.TerraBlade2Shot;
+            return ShinyOptions.SwordProjectileReworks && entity.type == ProjectileID.TerraBlade2Shot;
         }
 
 

@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using ShinyRemix.FrostWeapons.ModProjectiles;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +9,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ShinyRemix.FrostWeapons.GlobalProjectiles
+namespace ShinyRemix.SwordProjectileReworks.GlobalProjectiles
 {
     public class IceBladeShot : FrostBrandShot
     {
@@ -18,16 +17,11 @@ namespace ShinyRemix.FrostWeapons.GlobalProjectiles
 
         public override bool AppliesToEntity(Projectile entity, bool lateInstantiation)
         {
-            return ShinyOptions.FrostWeaponChanges && entity.type == ProjectileID.IceBolt;
-        }
-
-        public override void OnSpawn(Projectile projectile, IEntitySource source)
-        {
-            projectile.damage = (int)Math.Floor((float)projectile.damage * 2f / 3f);
-            base.OnSpawn(projectile, source);
+            return ShinyOptions.SwordProjectileReworks && entity.type == ProjectileID.IceBolt;
         }
 
         protected override Vector2 BaseShotDistance => new Vector2(-32f, -32f);
+        protected override int BlizzardDuration => 0;
 
     }
 }

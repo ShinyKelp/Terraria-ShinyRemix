@@ -9,14 +9,14 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ShinyRemix.SwordProjectileRanges.GlobalProjectiles
+namespace ShinyRemix.SwordProjectileReworks.GlobalProjectiles
 {
     public class InfluxWaverShot : GlobalProjectile
     {
         public override bool InstancePerEntity => true;
         public override bool AppliesToEntity(Projectile entity, bool lateInstantiation)
         {
-            return ShinyOptions.SwordProjectileRanges && entity.type == ProjectileID.InfluxWaver;
+            return ShinyOptions.SwordProjectileReworks && entity.type == ProjectileID.InfluxWaver;
         }
 
         Player player;
