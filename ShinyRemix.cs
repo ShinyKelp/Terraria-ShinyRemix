@@ -1,7 +1,10 @@
 using MonoMod.RuntimeDetour;
 using ShinyRemix.Flails;
 using ShinyRemix.NNBSpears;
+using Terraria;
+using Terraria.GameContent.Events;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace ShinyRemix
 {
@@ -12,9 +15,31 @@ namespace ShinyRemix
         public override void Load()
         {
             ShieldHook = new ILHook(typeof(Terraria.Player).GetMethod("ItemCheck_ManageRightClickFeatures_ShieldRaise"), SwordParries.SwordParriesIL.EnableSwordParries);
+            On_DD2Event.StartInvasion += this.On_DD2Event_StartInvasion;
         }
 
-		public override void PostSetupContent()
+        private void On_DD2Event_StartInvasion(On_DD2Event.orig_StartInvasion orig, int difficultyOverride)
+        {
+            orig(difficultyOverride);
+            if(Main.netMode != NetmodeID.MultiplayerClient && ShinyOptions.OldOneArmyBuffs)
+            {
+                switch (DD2Event.OngoingDifficulty)
+                {
+                    case 1:
+                        NPC.waveNumber = 3;
+                        break;
+                    case 2:
+                        NPC.waveNumber = 5;
+                        break;
+                    case 3:
+                        NPC.waveNumber = 4;
+                        break;
+                }
+            }
+        }
+
+
+        public override void PostSetupContent()
 		{
             if (ModLoader.TryGetMod("StormDiversMod", out Mod stormMod))
             {

@@ -95,7 +95,7 @@ Mods: {
 
 				OverloadMechanic: {
 					Label: Overload Mechanic
-					Tooltip: Increase your ranger damage at the cost of extra ammo
+					Tooltip: Overload your ranged weapon for extra damage at the cost of extra ammo
 				}
 
 				BlessedMechanic: {
@@ -124,8 +124,13 @@ Mods: {
 				}
 
 				BiomeKeyWeapons: {
-					Tooltip: ""
+					Tooltip: Biome Key weapon buffs/reworks, making them much more impactful
 					Label: Biome Key Weapons
+				}
+
+				OldOneArmyBuffs: {
+					Label: Old One's Army Buffs
+					Tooltip: Improvements to some OOA weapons, made events harder but less grindy
 				}
 			}
 		}

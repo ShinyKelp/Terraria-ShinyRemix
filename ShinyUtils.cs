@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace ShinyRemix
 {
@@ -32,6 +33,7 @@ namespace ShinyRemix
         {
             PrefixID.Quick,
             PrefixID.Deadly,
+            PrefixID.Deadly2,
             PrefixID.Agile,
             PrefixID.Nimble,
             PrefixID.Murderous,
@@ -58,5 +60,56 @@ namespace ShinyRemix
             PrefixID.Mythical,
             PrefixID.Celestial
         };
+
+        static Dictionary<int, float> VanillaSpeedPrefixValues = new Dictionary<int, float>()
+        {
+            {PrefixID.Rapid, 1.15f},
+            {PrefixID.Light, 1.15f},
+            {PrefixID.Frenzying, 1.15f},
+            {PrefixID.Legendary, 1.10f},
+            {PrefixID.Unreal, 1.10f},
+            {PrefixID.Mythical, 1.10f},
+            {PrefixID.Hasty, 1.10f},
+            {PrefixID.Deadly, 1.10f},
+            {PrefixID.Agile, 1.10f},
+            {PrefixID.Quick, 1.10f},
+            {PrefixID.Manic, 1.10f},
+            {PrefixID.Taboo, 1.10f},
+            {PrefixID.Nasty, 1.10f},
+            {PrefixID.Murderous, 1.06f},
+            {PrefixID.Deadly2, 1.05f},
+            {PrefixID.Nimble, 1.05f},
+            {PrefixID.Lazy, 0.92f},
+            {PrefixID.Celestial, 0.9f},
+            {PrefixID.Powerful, 0.9f},
+            {PrefixID.Heavy, 0.9f},
+            {PrefixID.Unhappy, 0.9f},
+            {PrefixID.Awkward, 0.9f},
+            {PrefixID.Bulky, 0.85f},
+            {PrefixID.Slow, 0.85f},
+            {PrefixID.Lethargic, 0.85f},
+            {PrefixID.Annoying, 0.85f},
+            {PrefixID.Sluggish, 0.85f}
+        };
+
+        public static float GetPrefixSpeedModifier(int prefixID)
+        {
+            if (prefixID <= 0)
+                return 1f;
+            else if(VanillaSpeedPrefixValues.ContainsKey(prefixID))
+                return VanillaSpeedPrefixValues[prefixID];
+            else
+            {
+                ModPrefix prefix = PrefixLoader.GetPrefix(prefixID);
+                if (prefix == null)
+                    return 1f;
+
+                float damageMult, knockbackMult, useTimeMult, scaleMult, shotSpeedMult, manaUseMult;
+                damageMult = knockbackMult = useTimeMult = scaleMult = shotSpeedMult = manaUseMult = 1f;
+                int critBonus = 4;
+                prefix.SetStats(ref damageMult, ref knockbackMult, ref useTimeMult, ref scaleMult, ref shotSpeedMult, ref manaUseMult, ref critBonus);
+                return 1f / useTimeMult;
+            }
+        }
     }
 }

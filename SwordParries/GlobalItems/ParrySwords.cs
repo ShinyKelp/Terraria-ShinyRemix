@@ -23,19 +23,5 @@ namespace ShinyRemix.SwordParries.GlobalItems
         {
             IsParrySword = true;
         }
-
-        public override void ModifyHitNPC(Item item, Player player, NPC target, ref NPC.HitModifiers modifiers)
-        {
-            if (player.HasBuff(BuffID.ParryDamageBuff))
-                Main.NewText($"Detected buff in modify hit!");
-            base.ModifyHitNPC(item, player, target, ref modifiers);
-        }
-
-        public override void OnHitNPC(Item item, Player player, NPC target, NPC.HitInfo hit, int damageDone)
-        {
-            if (player.HasBuff(BuffID.ParryDamageBuff))
-                Main.NewText($"Detected buff in on hit!");
-            base.OnHitNPC(item, player, target, hit, damageDone);
-        }
     }
 }
