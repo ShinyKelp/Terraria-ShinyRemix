@@ -14,7 +14,7 @@ namespace ShinyRemix.Common.GlobalProjectiles
     {
         public override bool AppliesToEntity(Projectile entity, bool lateInstantiation)
         {
-            return true;
+            return false;
         }
 
         public override void OnSpawn(Projectile projectile, IEntitySource source)
