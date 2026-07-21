@@ -19,7 +19,14 @@ namespace ShinyRemix.SwordProjectileReworks.GlobalProjectiles
         {
             return ShinyOptions.SwordProjectileReworks && entity.type == ProjectileID.IceBolt;
         }
-
+        public override void OnSpawn(Projectile projectile, IEntitySource source)
+        {
+            base.OnSpawn(projectile, source);
+            projectile.penetrate = 2;
+            projectile.usesLocalNPCImmunity = true;
+            projectile.usesIDStaticNPCImmunity = false;
+            projectile.localNPCHitCooldown = 10;
+        }
         protected override Vector2 BaseShotDistance => new Vector2(-32f, -32f);
         protected override int BlizzardDuration => 0;
 

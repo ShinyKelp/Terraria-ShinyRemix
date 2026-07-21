@@ -25,6 +25,7 @@ namespace ShinyRemix.SimpleArrowCompatibility.GlobalProjectiles
 
         public int debuffType = -1;
         const int debuffTime = 600;
+        public bool MoltenQuiverDebuff = false;
 
         public override void OnSpawn(Projectile projectile, IEntitySource source)
         {
@@ -33,6 +34,10 @@ namespace ShinyRemix.SimpleArrowCompatibility.GlobalProjectiles
                 debuffType = globalItem.debuffType;
             else if (source is EntitySource_ItemUse_WithAmmo ammoSource && ArrowItemDebuffs.ContainsKey(ammoSource.AmmoItemIdUsed))
                 debuffType = ArrowItemDebuffs[ammoSource.AmmoItemIdUsed];
+            if (player.hasMoltenQuiver)
+            {
+                MoltenQuiverDebuff = true;
+            }
             base.OnSpawn(projectile, source);
         }
 
@@ -69,6 +74,8 @@ namespace ShinyRemix.SimpleArrowCompatibility.GlobalProjectiles
                     break;
                 default: break;
             }
+            if (MoltenQuiverDebuff && debuffType != BuffID.OnFire)
+                FlamingArrowDust(projectile);
             base.PostAI(projectile);
         }
         private void FlamingArrowDust(Projectile projectile)
@@ -113,10 +120,16 @@ namespace ShinyRemix.SimpleArrowCompatibility.GlobalProjectiles
 
         public override void OnHitNPC(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)
         {
+            if (MoltenQuiverDebuff)
+                target.AddBuff(BuffID.OnFire3, debuffTime);
+
             if (debuffType >= 0)
             {
-                target.AddBuff(debuffType, debuffTime);
+                if(!MoltenQuiverDebuff || debuffType != BuffID.OnFire)
+                    target.AddBuff(debuffType, debuffTime);
             }
+
+            //Move elsewhere?
             if(projectile.type == ProjectileID.FrostArrow)
             {
                 target.AddBuff(BuffID.Frostburn2, 600);

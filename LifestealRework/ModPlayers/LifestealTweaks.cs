@@ -1,4 +1,5 @@
-﻿using ShinyRemix.LifestealRework.ModBuffs;
+﻿using ShinyRemix.Common.ModDusts;
+using ShinyRemix.LifestealRework.ModBuffs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,7 @@ namespace ShinyRemix.LifestealRework.ModPlayers
         const float targetLifeStealPerTick = 0.25f;
         float previousLifeSteal = -1;
         float lifeToDetract = 0f;
+        int dustCounter = 0;
         public override void PostUpdate()
         {
             if (ShinyOptions.LifestealRework)
@@ -56,11 +58,18 @@ namespace ShinyRemix.LifestealRework.ModPlayers
 
                     };
                     SoundEngine.PlaySound(SoundID.Item92);
+                    dustCounter = 60;
                 }
                 if (ShinyUtils.TRAE)
                     Player.AddBuff(ModContent.BuffType<LifestealBuff>(), 300);
                 else
                     Player.AddBuff(ModContent.BuffType<LifestealBuff>(), 600);
+            }
+            if (dustCounter > 0)
+            {
+                dustCounter--;
+                if(Main.rand.NextBool())
+                    Dust.NewDust(Player.position, Player.width, Player.height, ModContent.DustType<HealDust>());
             }
         }
 

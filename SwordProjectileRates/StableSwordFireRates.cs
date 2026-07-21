@@ -29,6 +29,7 @@ namespace ShinyRemix.SwordProjectileRates
                 case ItemID.IceSickle:
                 case ItemID.DeathSickle:
                 case ItemID.LightsBane:
+                case ItemID.StarWrath:
                     swingsPerShot = 1;
                     break;
                 case ItemID.IceBlade:
