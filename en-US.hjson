@@ -14,6 +14,7 @@ Mods: {
 			ClingerStaffPulse.DisplayName: Clinger Staff Pulse
 			ClingerStaffFireSpit.DisplayName: Clinger Staff Fire Spit
 			FlyingKnifeDuplicate.DisplayName: Flying Knife Duplicate
+			CursedFlamesStream.DisplayName: Cursed Flames Stream
 		}
 
 		Buffs: {

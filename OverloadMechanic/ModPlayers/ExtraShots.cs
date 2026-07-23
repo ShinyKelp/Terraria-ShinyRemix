@@ -29,7 +29,7 @@ namespace ShinyRemix.OverloadMechanic.ModPlayers
                     {
                         OverloadShot shot = extraShots[i];
                         Player.ConsumeItem(shot.AmmoUsed);
-                        Projectile proj = Projectile.NewProjectileDirect(shot.source, Player.Center + shot.PositionOffset, shot.Velocity, shot.Type, shot.Damage, shot.Knockback, Player.whoAmI, shot.ai0, shot.ai1, shot.ai2);
+                        Projectile proj = Projectile.NewProjectileDirect(shot.source, Player.Center - shot.PositionOffset, shot.Velocity, shot.Type, shot.Damage, shot.Knockback, Player.whoAmI, shot.ai0, shot.ai1, shot.ai2);
                         if (proj.TryGetGlobalProjectile<OverloadedProjectile>(out OverloadedProjectile overload))
                         {
                             overload.IsDuplicate = true;

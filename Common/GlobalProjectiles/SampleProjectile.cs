@@ -14,12 +14,12 @@ namespace ShinyRemix.Common.GlobalProjectiles
     {
         public override bool AppliesToEntity(Projectile entity, bool lateInstantiation)
         {
-            return false;
+            return entity.type == 85 ;
         }
 
         public override void OnSpawn(Projectile projectile, IEntitySource source)
         {
-            if (true)
+            if (false)
             {
                 Main.NewText($"Spawned: {projectile.Name}, {projectile.type}, {projectile.owner}");
             }
@@ -27,7 +27,7 @@ namespace ShinyRemix.Common.GlobalProjectiles
 
         public override bool PreAI(Projectile projectile)
         {
-            if (false)
+            if (true)
             {
                 Main.NewText($"Sync AIs: {projectile.ai[0]}, {projectile.ai[1]}, {projectile.ai[2]}");
                 Main.NewText($"LocalAIs: {projectile.localAI[0]}, {projectile.localAI[1]}, {projectile.localAI[2]}");
