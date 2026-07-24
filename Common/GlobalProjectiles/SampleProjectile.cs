@@ -14,7 +14,7 @@ namespace ShinyRemix.Common.GlobalProjectiles
     {
         public override bool AppliesToEntity(Projectile entity, bool lateInstantiation)
         {
-            return entity.type == 85 ;
+            return entity.type == ProjectileID.Muramasa ;
         }
 
         public override void OnSpawn(Projectile projectile, IEntitySource source)

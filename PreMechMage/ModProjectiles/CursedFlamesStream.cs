@@ -12,7 +12,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.GameContent.Animations.IL_Actions.Sprites;
 
-namespace ShinyRemix.Misc.ModProjectiles
+namespace ShinyRemix.PreMechMage.ModProjectiles
 {
     public class CursedFlamesStream : ModProjectile
     {
@@ -63,7 +63,7 @@ namespace ShinyRemix.Misc.ModProjectiles
             if (Projectile.localAI[0] < (float)num4 && Main.rand.NextFloat() < 0.25f)
             {
                 int num6 = DustID.CursedTorch;
-                Dust dust = Dust.NewDustDirect(Projectile.Center + Main.rand.NextVector2Circular(60f, 60f) * Utils.Remap(Projectile.localAI[0], 0f, 72f, 0.5f, 1f, true), 4, 4, (int)num6, Projectile.velocity.X * 0.2f, Projectile.velocity.Y * 0.2f, 100, default(Color), 1f);
+                Dust dust = Dust.NewDustDirect(Projectile.Center + Main.rand.NextVector2Circular(60f, 60f) * Utils.Remap(Projectile.localAI[0], 0f, 72f, 0.5f, 1f, true), 4, 4, num6, Projectile.velocity.X * 0.2f, Projectile.velocity.Y * 0.2f, 100, default(Color), 1f);
                 if (Main.rand.Next(4) == 0)
                 {
                     dust.noGravity = true;
@@ -79,7 +79,7 @@ namespace ShinyRemix.Misc.ModProjectiles
                 }
                 dust.scale *= 1.5f;
                 dust.velocity *= 1.2f;
-                dust.velocity += Projectile.velocity * 1f * Utils.Remap(Projectile.localAI[0], 0f, (float)num * 0.75f, 1f, 0.1f, true) * Utils.Remap(Projectile.localAI[0], 0f, (float)num * 0.1f, 0.1f, 1f, true);
+                dust.velocity += Projectile.velocity * 1f * Utils.Remap(Projectile.localAI[0], 0f, num * 0.75f, 1f, 0.1f, true) * Utils.Remap(Projectile.localAI[0], 0f, num * 0.1f, 0.1f, 1f, true);
                 dust.customData = 1;
                 dust.scale *= 0.6f;
             }
@@ -119,7 +119,7 @@ namespace ShinyRemix.Misc.ModProjectiles
             float num3 = 0.35f;
             float num4 = 0.7f;
             float num5 = 0.85f;
-            float incrementForAfterImages = ((Projectile.localAI[0] > num - 10f) ? 0.175f : 0.2f);
+            float incrementForAfterImages = Projectile.localAI[0] > num - 10f ? 0.175f : 0.2f;
 
             int num7 = 3;
             int num8 = 2;
@@ -138,7 +138,7 @@ namespace ShinyRemix.Misc.ModProjectiles
             {
                 for (float j = 1; j >= 0f; j -= incrementForAfterImages)
                 {
-                    baseFIreColor = ((num13 < 0.1f) ? Color.Lerp(Color.Transparent, color1, Utils.GetLerpValue(0f, 0.1f, num13, clamped: true)) : ((num13 < 0.2f) ? Color.Lerp(color1, color2, Utils.GetLerpValue(0.1f, 0.2f, num13, clamped: true)) : ((num13 < num3) ? color2 : ((num13 < num4) ? Color.Lerp(color2, color3, Utils.GetLerpValue(num3, num4, num13, clamped: true)) : ((num13 < num5) ? Color.Lerp(color3, color4, Utils.GetLerpValue(num4, num5, num13, clamped: true)) : ((!(num13 < 1f)) ? Color.Transparent : Color.Lerp(color4, Color.Transparent, Utils.GetLerpValue(num5, 1f, num13, clamped: true))))))));
+                    baseFIreColor = num13 < 0.1f ? Color.Lerp(Color.Transparent, color1, Utils.GetLerpValue(0f, 0.1f, num13, clamped: true)) : num13 < 0.2f ? Color.Lerp(color1, color2, Utils.GetLerpValue(0.1f, 0.2f, num13, clamped: true)) : num13 < num3 ? color2 : num13 < num4 ? Color.Lerp(color2, color3, Utils.GetLerpValue(num3, num4, num13, clamped: true)) : num13 < num5 ? Color.Lerp(color3, color4, Utils.GetLerpValue(num4, num5, num13, clamped: true)) : !(num13 < 1f) ? Color.Transparent : Color.Lerp(color4, Color.Transparent, Utils.GetLerpValue(num5, 1f, num13, clamped: true));
                     float num16 = (1f - j) * Utils.Remap(num13, 0f, 0.2f, 0f, 1f);
                     Vector2 vector = Projectile.Center - Main.screenPosition + Projectile.velocity * (0f - num12) * j;
                     Color color5 = baseFIreColor * num16;

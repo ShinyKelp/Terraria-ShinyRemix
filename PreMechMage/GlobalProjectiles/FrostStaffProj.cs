@@ -1,5 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
-using ShinyRemix.Misc.ModProjectiles;
+using ShinyRemix.PreMechMage.ModProjectiles;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +10,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ShinyRemix.Misc.GlobalProjectiles
+namespace ShinyRemix.PreMechMage.GlobalProjectiles
 {
     public class FrostStaffProj : GlobalProjectile
     {
@@ -19,7 +19,7 @@ namespace ShinyRemix.Misc.GlobalProjectiles
 
         public override bool AppliesToEntity(Projectile entity, bool lateInstantiation)
         {
-            return ShinyOptions.Misc && entity.type == ProjectileID.FrostBoltStaff;
+            return ShinyOptions.PreMechMage && entity.type == ProjectileID.FrostBoltStaff;
         }
         public override void OnSpawn(Projectile projectile, IEntitySource source)
         {

@@ -90,7 +90,7 @@ Mods: {
 				}
 
 				SimpleArrowCompatibility: {
-					Label: Simple Arrow Compatibility
+					Label: Arrow Synergies
 					Tooltip: Arrows that only apply a debuff will synergize with special bow projectiles like wooden arrows
 				}
 
@@ -131,7 +131,12 @@ Mods: {
 
 				OldOneArmyBuffs: {
 					Label: Old One's Army Buffs
-					Tooltip: Improvements to some OOA weapons, made events harder but less grindy
+					Tooltip: Improvements to OOA weapons, events harder but less grindy
+				}
+
+				PreMechMage: {
+					Label: Pre-Mech Mage
+					Tooltip: Changes to Mage's Pre-Mech options
 				}
 			}
 		}

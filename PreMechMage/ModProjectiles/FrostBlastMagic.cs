@@ -11,7 +11,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ShinyRemix.Misc.ModProjectiles
+namespace ShinyRemix.PreMechMage.ModProjectiles
 {
     public class FrostBlastMagic : ModProjectile
     {

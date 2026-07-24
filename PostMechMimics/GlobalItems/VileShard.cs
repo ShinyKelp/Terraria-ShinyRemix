@@ -21,7 +21,7 @@ namespace ShinyRemix.PostMechMimics.GlobalItems
         }
         public override void SetDefaults(Item entity)
         {
-            entity.damage += 15;
+            entity.damage += 20;
             entity.useTime = entity.useAnimation = 21;
             entity.knockBack *= 1.5f;
             if (!ShinyUtils.TRAE)
