@@ -8,7 +8,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ShinyRemix.Misc.GlobalItems
+namespace ShinyRemix.PirateInvasionBuffs.GlobalItems
 {
     public class Cutlass : GlobalItem
     {
@@ -41,10 +41,10 @@ namespace ShinyRemix.Misc.GlobalItems
                 for (int k = 0; k < num10; k++)
                 {
                     vector3 -= spinningpoint;
-                    spinningpoint = spinningpoint.RotatedBy((double)((0f - num6) / (float)num8), default(Vector2));
+                    spinningpoint = spinningpoint.RotatedBy((double)((0f - num6) / num8), default(Vector2));
                 }
                 vector3 += target.velocity * (float)num9;
-                Projectile.NewProjectile(player.GetSource_ItemUse(item), vector3, spinningpoint, 977, (int)((float)damageDone * 0.5f), 0f, player.whoAmI, num6, 0f, 0f);
+                Projectile.NewProjectile(player.GetSource_ItemUse(item), vector3, spinningpoint, 977, (int)(damageDone * 0.5f), 0f, player.whoAmI, num6, 0f, 0f);
             }
         }
     }

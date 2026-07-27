@@ -138,6 +138,11 @@ Mods: {
 					Label: Pre-Mech Mage
 					Tooltip: Changes to Mage's Pre-Mech options
 				}
+
+				PirateInvasionBuffs: {
+					Tooltip: ""
+					Label: Pirate Invasion Buffs
+				}
 			}
 		}
 	}

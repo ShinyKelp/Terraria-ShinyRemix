@@ -53,8 +53,10 @@ namespace ShinyRemix.PreMechMage.GlobalProjectiles
             {
                 projectile.ai[1]++;
                 projectile.velocity *= 0.85f;
+                projectile.rotation += MathHelper.PiOver4 * 0.5f * Math.Sign(projectile.velocity.X);
                 if (projectile.ai[1] >= 40)
                     projectile.Kill();
+                return false;
             }
             return true;
         }

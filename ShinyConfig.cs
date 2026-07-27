@@ -79,6 +79,10 @@ namespace ShinyRemix
 
         [ReloadRequired]
         [DefaultValue(true)]
+        public bool PirateInvasionBuffs = true;
+
+        [ReloadRequired]
+        [DefaultValue(true)]
         public bool OldManQuest = true;
 
         [ReloadRequired]
@@ -102,6 +106,7 @@ namespace ShinyRemix
         public static bool PostMechMimics => GetInstance<ShinyConfig>().PostMechMimics;
         public static bool BiomeKeyWeapons => GetInstance<ShinyConfig>().BiomeKeyWeapons;
         public static bool OldOneArmyBuffs => GetInstance<ShinyConfig>().OldOneArmyBuffs;
+        public static bool PirateInvasionBuffs => GetInstance<ShinyConfig>().PirateInvasionBuffs;
         public static bool OldManQuest => GetInstance<ShinyConfig>().OldManQuest;
         public static bool LifestealRework => GetInstance<ShinyConfig>().LifestealRework;
         public static bool Misc => GetInstance<ShinyConfig>().Misc;

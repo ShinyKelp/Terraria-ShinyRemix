@@ -12,5 +12,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\Buffs\" />
+    <Folder Include="Misc\" />
   </ItemGroup>
 </Project>

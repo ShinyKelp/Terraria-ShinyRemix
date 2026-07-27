@@ -11,7 +11,7 @@ using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ShinyRemix.Misc.GlobalProjectiles
+namespace ShinyRemix.PirateInvasionBuffs.GlobalProjectiles
 {
     public class CutlassSlash : GlobalProjectile
     {

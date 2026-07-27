@@ -5,38 +5,24 @@ using Terraria;
 using Terraria.GameContent.Events;
 using Terraria.ModLoader;
 using Terraria.ID;
+using MonoMod.Cil;
+using System;
 
 namespace ShinyRemix
 {
 	public class ShinyRemix : Mod
 	{
-        static ILHook ShieldHook;
 
         public override void Load()
         {
-            ShieldHook = new ILHook(typeof(Terraria.Player).GetMethod("ItemCheck_ManageRightClickFeatures_ShieldRaise"), SwordParries.SwordParriesIL.EnableSwordParries);
-            On_DD2Event.StartInvasion += this.On_DD2Event_StartInvasion;
+            IL_Player.ItemCheck_ManageRightClickFeatures_ShieldRaise += SwordParries.SwordParriesIL.EnableSwordParries;
+            On_DD2Event.StartInvasion += OOAChanges.OOAWaveSkip.OOAStartWaveSkip;
+            IL_Main.UpdateTime_StartDay += PirateInvasionBuffs.PirateInvasionIL.ChangePirateInvasionCheck;
         }
 
-        private void On_DD2Event_StartInvasion(On_DD2Event.orig_StartInvasion orig, int difficultyOverride)
-        {
-            orig(difficultyOverride);
-            if(Main.netMode != NetmodeID.MultiplayerClient && ShinyOptions.OldOneArmyBuffs)
-            {
-                switch (DD2Event.OngoingDifficulty)
-                {
-                    case 1:
-                        NPC.waveNumber = 3;
-                        break;
-                    case 2:
-                        NPC.waveNumber = 5;
-                        break;
-                    case 3:
-                        NPC.waveNumber = 4;
-                        break;
-                }
-            }
-        }
+
+
+
 
 
         public override void PostSetupContent()
