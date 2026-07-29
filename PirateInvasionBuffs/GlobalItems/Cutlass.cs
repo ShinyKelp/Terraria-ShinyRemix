@@ -44,7 +44,7 @@ namespace ShinyRemix.PirateInvasionBuffs.GlobalItems
                     spinningpoint = spinningpoint.RotatedBy((double)((0f - num6) / num8), default(Vector2));
                 }
                 vector3 += target.velocity * (float)num9;
-                Projectile.NewProjectile(player.GetSource_ItemUse(item), vector3, spinningpoint, 977, (int)(damageDone * 0.5f), 0f, player.whoAmI, num6, 0f, 0f);
+                Projectile.NewProjectile(player.GetSource_ItemUse(item), vector3, spinningpoint, 977, (int)(damageDone * 0.5f), 0f, player.whoAmI, num6, 1f, 0f);
             }
         }
     }
