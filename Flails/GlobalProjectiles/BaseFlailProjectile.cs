@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Terraria;
+using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.ID;
@@ -64,9 +65,15 @@ namespace ShinyRemix.Flails.GlobalProjectiles
 
         private float launchGhostGracePeriod = 1f;
 
+        private bool megaLaunch = false;
+        private bool megaLaunched = false;
+        private bool crashPrevention = false;
+        private bool crashing = false;
+
         /*  AI[0]:
          *  0: Spinning
          *  1: Launching forward
+         *  5: Launching forward, hit a tile
          *  2: Retreating after launch
          *  6: Dropping
          *  4: Retreating after drop
@@ -80,6 +87,42 @@ namespace ShinyRemix.Flails.GlobalProjectiles
          *  localAI[1]:
          *  Count of frames spent spinning
          */
+        public override bool PreAI(Projectile projectile)
+        {
+
+            if (projectile.ai[0] == 2f || projectile.ai[0] == 5f)
+            {
+                //Flails have a weird AF bug: they disappear if they are launched very far, for NO REASON. Only solution I've found
+                //is to manually tweak their speed and position so they never get further than 900 distance away from the player.
+                if(!crashPrevention && (player.velocity + player.Center).Distance(projectile.velocity + projectile.Center) > 850f)
+                {
+                    float dist = player.Center.Distance(projectile.Center);
+                    if(projectile.velocity.Length() > 20f)
+                    {
+                        projectile.velocity *= (20f / projectile.velocity.Length());
+                    }
+                    Vector2 moveDir = projectile.Center.DirectionTo(player.Center);
+                    projectile.position += moveDir * (dist - 850f);
+                    projectile.velocity = moveDir * projectile.velocity.Length();
+                    
+                    crashPrevention = true;
+                }
+            }
+            //Predict the frame that flail will be thrown
+            else if(projectile.ai[0] == 0f && !player.channel && megaLaunch)
+            {
+                //Bomb sound ID? Or harpoon?
+                SoundStyle style = SoundID.Item10 with
+                {
+                    Pitch = -0.7f,
+                    Volume = 4f
+
+                };
+                SoundEngine.PlaySound(style, player.position);
+            }
+
+            return true;
+        }
         public override void AI(Projectile projectile)
         {
 
@@ -91,6 +134,13 @@ namespace ShinyRemix.Flails.GlobalProjectiles
                 //Timer that affects swing animation speed
                 projectile.localAI[1] += (FinalSpeedModifier * 0.5f);
 
+                if (projectile.localAI[1] >= 60f && !megaLaunch)
+                {
+                    if(player.whoAmI == Main.myPlayer)
+                        ChargeReadyEffects(player);
+                    megaLaunch = true;
+                }
+
                 //Make flail swing further away from the player
                 Vector2 offset = projectile.Center - player.MountedCenter;
                 float radiusModifier = projectile.scale / origScale;
@@ -101,16 +151,46 @@ namespace ShinyRemix.Flails.GlobalProjectiles
                 projectile.localNPCHitCooldown = (int)Math.Max(Math.Round((float)baseFramesPerSwing / (1f + FinalSpeedModifier * 0.5f)), 2) - 1;
                 //projectile.Center = player.MountedCenter + Vector2.Normalize(offset) * currentRadius * radiusModifier;
             }
-            
-            if (projectile.ai[0] == 6)
+            else if (projectile.ai[0] == 1 && megaLaunch)
             {
-                projectile.localNPCHitCooldown = (int) Math.Ceiling(12f / (1f + FinalSpeedModifier));
+                megaLaunch = false;
+                megaLaunched = true;
+                projectile.velocity *= 1.5f;
+                
+                projectile.damage = (int)Math.Floor(projectile.damage * 2.5f);
+            }
+            else if (projectile.ai[0] != 1 && megaLaunched)
+            {
+                megaLaunched = false;
+                projectile.damage = (int)Math.Ceiling(projectile.damage / 2.5f);
+            }
+
+            
+            else if (projectile.ai[0] == 6)
+            {
+                projectile.localNPCHitCooldown = (int)Math.Ceiling(12f / (1f + FinalSpeedModifier));
                 projectile.rotation = baseDroppedRotationSpeed * droppedFrameCount * (1f + FinalSpeedModifier * 0.5f) * player.direction;
                 droppedFrameCount++;
             }
-
+            crashing = projectile.Distance(player.Center) > 900f;
             //Main.NewText($"Local frames: {projectile.localNPCHitCooldown}");
 
+        }
+
+
+        void ChargeReadyEffects(Player player)
+        {
+            if (player.whoAmI == Main.myPlayer)
+            {
+                SoundEngine.PlaySound(SoundID.MaxMana);
+                for (int i = 0; i < 5; i++)
+                {
+                    int num3 = Dust.NewDust(player.position, player.width, player.height, 45, 0f, 0f, 255, default(Color), (float)Main.rand.Next(20, 26) * 0.1f);
+                    Main.dust[num3].noLight = true;
+                    Main.dust[num3].noGravity = true;
+                    Main.dust[num3].velocity *= 0.5f;
+                }
+            }
         }
 
         public override void ModifyDamageHitbox(Projectile projectile, ref Rectangle hitbox)
