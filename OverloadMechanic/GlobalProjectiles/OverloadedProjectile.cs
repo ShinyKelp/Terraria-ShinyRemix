@@ -86,7 +86,8 @@ namespace ShinyRemix.OverloadMechanic.GlobalProjectiles
                                 overShot.counter++;
                             overShot.originalProjectile = projectile.whoAmI;
 
-                            overShot.Damage = projectile.damage - (int)Math.Floor(0.5f * player.GetTotalDamage(player.HeldItem.DamageType).ApplyTo(player.HeldItem.damage));
+                            float projDamageRatio = (float)projectile.damage / (player.GetTotalDamage(player.HeldItem.DamageType).ApplyTo(player.HeldItem.damage + ammo.damage));
+                            overShot.Damage = projectile.damage - (int)(projDamageRatio * Math.Floor(0.6f * player.GetTotalDamage(player.HeldItem.DamageType).ApplyTo(player.HeldItem.damage)));
 
                             if (player.active && !player.dead && player.TryGetModPlayer<ExtraShots>(out ExtraShots extraShots))
                             {
