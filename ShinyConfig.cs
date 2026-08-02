@@ -55,6 +55,10 @@ namespace ShinyRemix
 
         [ReloadRequired]
         [DefaultValue(true)]
+        public bool ShroomiteTweaks = true;
+
+        [ReloadRequired]
+        [DefaultValue(true)]
         public bool OverloadMechanic = true;
 
         [ReloadRequired]
@@ -100,6 +104,7 @@ namespace ShinyRemix
         public static bool FlailChanges => GetInstance<ShinyConfig>().FlailChanges;
         public static bool MeleeArmorChanges => GetInstance<ShinyConfig>().MeleeArmorChanges;
         public static bool SimpleArrowCompatibility => GetInstance<ShinyConfig>().SimpleArrowCompatibility;
+        public static bool ShroomiteTweaks => GetInstance<ShinyConfig>().ShroomiteTweaks;
         public static bool OverloadMechanic => GetInstance<ShinyConfig>().OverloadMechanic;
         public static bool BlessedMechanic => GetInstance<ShinyConfig>().BlessedMechanic;
         public static bool PreMechMage => GetInstance<ShinyConfig>().PreMechMage;

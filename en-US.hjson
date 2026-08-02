@@ -140,8 +140,13 @@ Mods: {
 				}
 
 				PirateInvasionBuffs: {
-					Tooltip: ""
+					Tooltip: Improvements to pirate gear
 					Label: Pirate Invasion Buffs
+				}
+
+				ShroomiteTweaks: {
+					Label: Shroomite Armor Tweaks
+					Tooltip: Keep partial stealth while moving, but lose it when hurt
 				}
 			}
 		}

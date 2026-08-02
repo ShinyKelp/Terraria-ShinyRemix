@@ -23,6 +23,10 @@ namespace ShinyRemix.Common.GlobalProjectiles
             {
                 Main.NewText($"Spawned: {projectile.Name}, {projectile.type}, {projectile.owner}");
             }
+            if(false && source is EntitySource_ItemUse_WithAmmo ammoSource)
+            {
+                Main.NewText($"Spawned arrow: {projectile.Name}; from bow: {ammoSource.Item.Name}");
+            }
         }
 
         public override bool PreAI(Projectile projectile)
