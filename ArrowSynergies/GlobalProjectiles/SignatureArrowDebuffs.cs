@@ -1,5 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
-using ShinyRemix.SimpleArrowCompatibility.GlobalItems;
+using ShinyRemix.ArrowSynergies.GlobalItems;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,8 +9,8 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static ShinyRemix.SimpleArrowCompatibility.SimpleArrowCompatUtils;
-namespace ShinyRemix.SimpleArrowCompatibility.GlobalProjectiles
+using static ShinyRemix.ArrowSynergies.ArrowSynergyUtils;
+namespace ShinyRemix.ArrowSynergies.GlobalProjectiles
 {
     public class SignatureArrowDebuffs : GlobalProjectile
     {
@@ -38,6 +38,7 @@ namespace ShinyRemix.SimpleArrowCompatibility.GlobalProjectiles
             {
                 MoltenQuiverDebuff = true;
             }
+            
             base.OnSpawn(projectile, source);
         }
 

@@ -8,9 +8,9 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static ShinyRemix.SimpleArrowCompatibility.SimpleArrowCompatUtils;
+using static ShinyRemix.ArrowSynergies.ArrowSynergyUtils;
 
-namespace ShinyRemix.SimpleArrowCompatibility.GlobalProjectiles
+namespace ShinyRemix.ArrowSynergies.GlobalProjectiles
 {
     public class MoltenQuiverInferno : GlobalProjectile
     {

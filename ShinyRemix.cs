@@ -7,6 +7,9 @@ using Terraria.ModLoader;
 using Terraria.ID;
 using MonoMod.Cil;
 using System;
+using System.Globalization;
+using ShinyRemix.ArrowSynergies;
+using System.Collections.Generic;
 
 namespace ShinyRemix
 {
@@ -19,10 +22,6 @@ namespace ShinyRemix
             On_DD2Event.StartInvasion += OOAChanges.OOAWaveSkip.OOAStartWaveSkip;
             IL_Main.UpdateTime_StartDay += PirateInvasionBuffs.PirateInvasionIL.ChangePirateInvasionCheck;
         }
-
-
-
-
 
 
         public override void PostSetupContent()
@@ -48,6 +47,33 @@ namespace ShinyRemix
                     if (thoriumMod.TryFind(modSpearName, out proj))
                         NNBSpearUtils.ModSpearIDs[modSpearName] = proj.Type;
                 }
+
+
+                foreach (KeyValuePair<string, string> bowPair in ArrowSynergyUtils.ModBowArrowPairs)
+                {
+                    ModItem bow;
+                    ModProjectile bowShoot;
+
+                    if(thoriumMod.TryFind(bowPair.Key, out bow) && thoriumMod.TryFind(bowPair.Value, out bowShoot))
+                        ArrowSynergyUtils.BowArrowSignatures.Add(bow.Type, bowShoot.Type);
+                    
+                }
+                foreach(string complexBow in ArrowSynergyUtils.ComplexBows)
+                {
+                    ModItem bow;
+                    if (thoriumMod.TryFind(complexBow, out bow))
+                    {
+                        ArrowSynergyUtils.BowArrowSignatures.Add(bow.Type, ProjectileID.WoodenArrowFriendly);
+                    }
+                }
+
+                foreach(string arrowName in ArrowSynergyUtils.ModArrowOverrides)
+                {
+                    ModProjectile arrow;
+                    if (thoriumMod.TryFind(arrowName, out arrow))
+                        ArrowSynergyUtils.ArrowOverrides.Add(arrow.Type);
+                }
+
             }
             if (ModLoader.TryGetMod("TRAEProject", out Mod traeMod))
             {

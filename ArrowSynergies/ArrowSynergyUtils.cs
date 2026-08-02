@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Terraria.ID;
 
-namespace ShinyRemix.SimpleArrowCompatibility
+namespace ShinyRemix.ArrowSynergies
 {
-    public static class SimpleArrowCompatUtils
+    public static class ArrowSynergyUtils
     {
         public static Dictionary<int, int> BowArrowSignatures = new Dictionary<int, int>()
         {
@@ -15,6 +15,39 @@ namespace ShinyRemix.SimpleArrowCompatibility
             {ItemID.FairyQueenRangedItem, ProjectileID.FairyQueenRangedItemShot},
             {ItemID.MoltenFury, ProjectileID.FireArrow},
             //{ItemID.DD2PhoenixBow, ProjectileID.FireArrow}
+        };
+
+        public static HashSet<string> ComplexBows = new HashSet<string>()
+        {
+            "ChampionsTrifectaShot", "CinderString"
+        };
+
+
+
+        public static Dictionary<string, string> ModBowArrowPairs = new Dictionary<string, string>()
+        {
+            {"BloomingBow", "BloomingBowPro"},
+            {"TalonBurst","TalonBurstPro"},
+            {"CoralCrossbow","CoralCrossbowPro"},
+            {"FeatherFoe","FeatherArrowPro"},
+            {"GraniteCrossbow","GraniteArrowPro"},
+            {"GrassStringBow","JungleArrow"},
+            {"DecayingSorrow","DecayingSorrowPro"},
+            {"CupidString","CupidStringPro"},
+            {"GlacialSting","GlacialArrow"},
+            {"ShusWrath","ShusArrow"},
+        };
+
+
+        public static HashSet<string> ModArrowOverrides = new HashSet<string>()
+        {
+            "CometCrossfirePro",
+            "ShadowFlareBowPro",
+            "CinderStringPro",
+            "ChampionsTrifectaShotPro",
+            "ChampionsTrifectaShotPro2",
+            "ChampionsTrifectaShotPro3",
+            "ChampionsTrifectaShotPro4",
         };
 
         public static HashSet<int> ArrowOverrides = new HashSet<int>()
