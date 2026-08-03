@@ -148,6 +148,11 @@ Mods: {
 					Label: Shroomite Armor Tweaks
 					Tooltip: Keep partial stealth while moving, but lose it when hurt
 				}
+
+				MagicPowerBoost: {
+					Label: Magic Power Boost
+					Tooltip: "Magic Power buff gives more damage, halves mana from potions and stars"
+				}
 			}
 		}
 	}
