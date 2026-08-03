@@ -14,7 +14,7 @@ namespace ShinyRemix.ThrowSpeed.GlobalProjectiles
     {
         public override bool AppliesToEntity(Projectile entity, bool lateInstantiation)
         {
-            return true && entity.type == ProjectileID.ShadowFlameKnife;
+            return ShinyOptions.ThrowSpeedScaling && entity.type == ProjectileID.ShadowFlameKnife;
         }
 
         public override void OnSpawn(Projectile projectile, IEntitySource source)
@@ -26,10 +26,12 @@ namespace ShinyRemix.ThrowSpeed.GlobalProjectiles
         }
         public override bool PreAI(Projectile projectile)
         {
-            if (projectile.ai[0] == 30f && projectile.penetrate >= 4)
-                projectile.damage = (int)Math.Floor(projectile.damage * 0.75f);
-            Main.NewText($"Sync AIs: {projectile.ai[0]}, {projectile.ai[1]}, {projectile.ai[2]}");
-            Main.NewText($"LocalAIs: {projectile.localAI[0]}, {projectile.localAI[1]}, {projectile.localAI[2]}");
+            if (projectile.ai[0] == 30f && projectile.penetrate >= 3)
+            {
+                Main.NewText($"Damage reduction.");
+            projectile.damage = (int)Math.Floor(projectile.damage * 0.75f);
+
+            }
             return base.PreAI(projectile);
         }
     }

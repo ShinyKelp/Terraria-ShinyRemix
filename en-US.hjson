@@ -153,6 +153,11 @@ Mods: {
 					Label: Magic Power Boost
 					Tooltip: Magic Power buff gives more damage, halves mana from potions and stars
 				}
+
+				ThrowSpeedScaling: {
+					Tooltip: "Throw Speed Scaling"
+					Label: Melee weapons that throw stuff will scale their use speed with melee speed
+				}
 			}
 		}
 	}

@@ -43,6 +43,10 @@ namespace ShinyRemix
 
         [ReloadRequired]
         [DefaultValue(true)]
+        public bool ThrowSpeedScaling = true;
+
+        [ReloadRequired]
+        [DefaultValue(true)]
         public bool Misc = true;
 
         [ReloadRequired]
@@ -106,6 +110,7 @@ namespace ShinyRemix
         public static bool SwordProjectileReworks => GetInstance<ShinyConfig>().SwordProjectileReworks;
         public static bool SwordParries => GetInstance<ShinyConfig>().SwordParries;
         public static bool FlailChanges => GetInstance<ShinyConfig>().FlailChanges;
+        public static bool ThrowSpeedScaling => GetInstance<ShinyConfig>().ThrowSpeedScaling;
         public static bool MeleeArmorChanges => GetInstance<ShinyConfig>().MeleeArmorChanges;
         public static bool SimpleArrowCompatibility => GetInstance<ShinyConfig>().SimpleArrowCompatibility;
         public static bool ShroomiteTweaks => GetInstance<ShinyConfig>().ShroomiteTweaks;

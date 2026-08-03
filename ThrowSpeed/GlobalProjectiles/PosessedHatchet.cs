@@ -14,7 +14,7 @@ namespace ShinyRemix.ThrowSpeed.GlobalProjectiles
     {
         public override bool AppliesToEntity(Projectile entity, bool lateInstantiation)
         {
-            return true && entity.type == ProjectileID.PossessedHatchet;
+            return ShinyOptions.ThrowSpeedScaling && entity.type == ProjectileID.PossessedHatchet;
         }
 
         public override void OnSpawn(Projectile projectile, IEntitySource source)
@@ -31,8 +31,6 @@ namespace ShinyRemix.ThrowSpeed.GlobalProjectiles
             {
                 projectile.damage = (int)Math.Max(projectile.localAI[0] * 5f, (float)projectile.damage - projectile.localAI[0]);
             }
-            Main.NewText($"Sync AIs: {projectile.ai[0]}, {projectile.ai[1]}, {projectile.ai[2]}");
-            Main.NewText($"LocalAIs: {projectile.localAI[0]}, {projectile.localAI[1]}, {projectile.localAI[2]}");
             return true;
         }
     }
