@@ -15,7 +15,7 @@ namespace ShinyRemix.BiomeWeapons.GlobalProjectiles
         public override bool InstancePerEntity => true;
         public override bool AppliesToEntity(Projectile entity, bool lateInstantiation)
         {
-            return ShinyOptions.BiomeKeyWeapons && entity.type == ProjectileID.VampireKnife;
+            return true && entity.type == ProjectileID.VampireKnife;
         }
         public override void OnSpawn(Projectile projectile, IEntitySource source)
         {

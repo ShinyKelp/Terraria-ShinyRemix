@@ -28,6 +28,14 @@ namespace ShinyRemix.Flails
 
         public static void SetUpUtils()
         {
+            if(ShinyUtils.Thorium && ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod))
+            {
+                foreach(string itemName in ModFlailItems.Keys)
+                {
+                    if (thoriumMod.TryFind(itemName, out ModItem thoriumItem))
+                        ModFlailItems[itemName] = thoriumItem.Type;
+                }
+            }
             if (ModLoader.TryGetMod("StormDiversMod", out Mod stormMod))
             {
                 if (stormMod.TryFind("DestroyerFlailProj", out ModProjectile proj))

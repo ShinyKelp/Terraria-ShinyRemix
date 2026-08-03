@@ -11,7 +11,7 @@ namespace ShinyRemix.NNBSpears.GlobalItems
     public class TRAESpearItems : GlobalItem
     {
 
-        static int[] TRAEVanillaSpears = new int[] { ItemID.DayBreak, ItemID.ScourgeoftheCorruptor, ItemID.Javelin, ItemID.BoneJavelin};
+        public static int[] TRAEVanillaSpears = new int[] { ItemID.DayBreak, ItemID.ScourgeoftheCorruptor, ItemID.Javelin, ItemID.BoneJavelin};
 
         public override bool AppliesToEntity(Item item, bool lateInstatiation)
         {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShinyRemix.NNBSpears;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,34 +19,12 @@ namespace ShinyRemix.BiomeWeapons.GlobalItems
         }
         public override void SetDefaults(Item entity)
         {
-            entity.DamageType = DamageClass.Melee;
-            entity.useTime = entity.useAnimation = 26;
-            if (ShinyUtils.TRAE)
+            if (ShinyUtils.TRAE && NNBSpearUtils.ModSpearIDs["SoTC"] != -1)
             {
                 entity.useTime = entity.useAnimation = 33;
                 entity.damage -= 5;
+                PrefixLegacy.ItemSets.SwordsHammersAxesPicks[entity.type] = true;
             }
-            PrefixLegacy.ItemSets.SwordsHammersAxesPicks[entity.type] = true;
-        }
-        public override void SetStaticDefaults()
-        {
-            PrefixLegacy.ItemSets.SwordsHammersAxesPicks[ItemID.ScourgeoftheCorruptor] = true;
-        }
-        public override bool AllowPrefix(Item item, int pre)
-        {
-            if(ShinyUtils.TRAE)
-                return base.AllowPrefix(item, pre);
-            if (ShinyUtils.SizePrefixes.Contains(pre))
-                return false;
-            ModPrefix prefix = PrefixLoader.GetPrefix(pre);
-            if (prefix == null)
-                return true;
-            
-            float damageMult, knockbackMult, useTimeMult, scaleMult, shotSpeedMult, manaUseMult;
-            damageMult = knockbackMult = useTimeMult = scaleMult = shotSpeedMult = manaUseMult = 1f;
-            int critBonus = 4;
-            prefix.SetStats(ref damageMult, ref knockbackMult, ref useTimeMult, ref scaleMult, ref shotSpeedMult, ref manaUseMult, ref critBonus);
-            return scaleMult == 1f;
         }
     }
 }
