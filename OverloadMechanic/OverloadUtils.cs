@@ -11,6 +11,11 @@ namespace ShinyRemix.OverloadMechanic
 {
     public static class OverloadUtils
     {
+        public static HashSet<int> ProximityExceptions = new HashSet<int>()
+        {
+            ItemID.DaedalusStormbow,
+            ItemID.BloodRainBow
+        };
 
         //Ammo save caused by weapon animation rather than actual formula
         public static bool IsAmmoFreeFromAnimation(Player player, Item weapon, Item ammo)

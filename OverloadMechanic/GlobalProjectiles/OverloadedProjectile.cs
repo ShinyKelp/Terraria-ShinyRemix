@@ -45,7 +45,7 @@ namespace ShinyRemix.OverloadMechanic.GlobalProjectiles
 
         void DoOverloadCheck(Projectile projectile)
         {
-            if (projectile.owner == Main.myPlayer && source is EntitySource_ItemUse_WithAmmo ammoSource && projectile.Center.Distance(Main.player[projectile.owner].Center) < 48f)
+            if (projectile.owner == Main.myPlayer && source is EntitySource_ItemUse_WithAmmo ammoSource && DistanceCheck(projectile))
             {
                 Player player = Main.player[projectile.owner];
                 if (ammoSource.Item.TryGetGlobalItem<OverloadedItem>(out OverloadedItem overIt) && overIt.overloaded)
@@ -105,7 +105,12 @@ namespace ShinyRemix.OverloadMechanic.GlobalProjectiles
 
         }
 
-        //WORKS.
+        private bool DistanceCheck(Projectile projectile)
+        {
+            return projectile.Center.Distance(Main.player[projectile.owner].Center) < 48f ||
+                OverloadUtils.ProximityExceptions.Contains(Main.player[projectile.owner].HeldItem.type);
+        }
+
         private bool IsCapableOfConsumingAmmo(Projectile projectile, Item ammo)
         {
             Player player = Main.player[projectile.owner];
