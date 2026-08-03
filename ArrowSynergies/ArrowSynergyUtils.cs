@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace ShinyRemix.ArrowSynergies
 {
@@ -17,7 +18,7 @@ namespace ShinyRemix.ArrowSynergies
             //{ItemID.DD2PhoenixBow, ProjectileID.FireArrow}
         };
 
-        public static HashSet<string> ComplexBows = new HashSet<string>()
+        public static HashSet<string> ModComplexBows = new HashSet<string>()
         {
             "ChampionsTrifectaShot", "CinderString"
         };
@@ -77,5 +78,38 @@ namespace ShinyRemix.ArrowSynergies
             { ItemID.CursedArrow, BuffID.CursedInferno },
             { ItemID.VenomArrow, BuffID.Venom },
         };
+
+        public static void SetUpUtils()
+        {
+            if (ShinyUtils.Thorium && ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod))
+            {
+                foreach (KeyValuePair<string, string> bowPair in ArrowSynergyUtils.ModBowArrowPairs)
+                {
+                    ModItem bow;
+                    ModProjectile bowShoot;
+
+                    if (thoriumMod.TryFind(bowPair.Key, out bow) && thoriumMod.TryFind(bowPair.Value, out bowShoot))
+                        ArrowSynergyUtils.BowArrowSignatures.Add(bow.Type, bowShoot.Type);
+
+                }
+                foreach (string complexBow in ArrowSynergyUtils.ModComplexBows)
+                {
+                    ModItem bow;
+                    if (thoriumMod.TryFind(complexBow, out bow))
+                    {
+                        ArrowSynergyUtils.BowArrowSignatures.Add(bow.Type, ProjectileID.WoodenArrowFriendly);
+                    }
+                }
+
+                foreach (string arrowName in ArrowSynergyUtils.ModArrowOverrides)
+                {
+                    ModProjectile arrow;
+                    if (thoriumMod.TryFind(arrowName, out arrow))
+                        ArrowSynergyUtils.ArrowOverrides.Add(arrow.Type);
+                }
+
+            }
+        }
+
     }
 }

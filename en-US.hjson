@@ -151,7 +151,7 @@ Mods: {
 
 				MagicPowerBoost: {
 					Label: Magic Power Boost
-					Tooltip: "Magic Power buff gives more damage, halves mana from potions and stars"
+					Tooltip: Magic Power buff gives more damage, halves mana from potions and stars
 				}
 			}
 		}
