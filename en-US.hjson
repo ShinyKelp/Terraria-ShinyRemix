@@ -155,8 +155,13 @@ Mods: {
 				}
 
 				ThrowSpeedScaling: {
-					Tooltip: "Throw Speed Scaling"
-					Label: Melee weapons that throw stuff will scale their use speed with melee speed
+					Label: Throw Speed Scaling
+					Tooltip: Melee weapons that throw stuff will scale their use speed with melee speed
+				}
+
+				MeteorArmorSynergies: {
+					Tooltip: "Meteor armor gives less damage, but more weapons get free casts with it"
+					Label: Meteor Armor Synergies
 				}
 			}
 		}

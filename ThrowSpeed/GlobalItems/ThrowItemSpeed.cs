@@ -21,6 +21,8 @@ namespace ShinyRemix.ThrowSpeed.GlobalItems
         public override void SetDefaults(Item entity)
         {
             entity.DamageType = DamageClass.Melee;
+            if (entity.useTime != entity.useAnimation)
+                return;
             entity.useTime += (int)Math.Floor(entity.useTime * 0.1f) + 2;
             if (entity.type == ItemID.DayBreak) 
             { 

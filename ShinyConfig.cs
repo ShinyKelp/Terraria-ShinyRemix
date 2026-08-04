@@ -67,6 +67,10 @@ namespace ShinyRemix
 
         [ReloadRequired]
         [DefaultValue(true)]
+        public bool MeteorArmorSynergies = true;
+
+        [ReloadRequired]
+        [DefaultValue(true)]
         public bool PreMechMage = true;
 
         [ReloadRequired]
@@ -117,6 +121,7 @@ namespace ShinyRemix
         public static bool OverloadMechanic => GetInstance<ShinyConfig>().OverloadMechanic;
         public static bool BlessedMechanic => GetInstance<ShinyConfig>().BlessedMechanic;
         public static bool MagicPowerBoost => GetInstance<ShinyConfig>().MagicPowerBoost;
+        public static bool MeteorArmorSynergies => GetInstance<ShinyConfig>().MeteorArmorSynergies;
         public static bool PreMechMage => GetInstance<ShinyConfig>().PreMechMage;
         public static bool PostMechMimics => GetInstance<ShinyConfig>().PostMechMimics;
         public static bool BiomeKeyWeapons => GetInstance<ShinyConfig>().BiomeKeyWeapons;

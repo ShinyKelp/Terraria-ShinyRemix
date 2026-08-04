@@ -7,6 +7,7 @@ using MonoMod.Cil;
 using System;
 using System.Globalization;
 using System.Collections.Generic;
+using Mono.Cecil.Cil;
 
 namespace ShinyRemix
 {
@@ -19,7 +20,6 @@ namespace ShinyRemix
             On_DD2Event.StartInvasion += OOAChanges.OOAWaveSkip.OOAStartWaveSkip;
             IL_Main.UpdateTime_StartDay += PirateInvasionBuffs.PirateInvasionIL.ChangePirateInvasionCheck;
         }
-
 
         public override void PostSetupContent()
 		{
