@@ -160,7 +160,7 @@ Mods: {
 				}
 
 				MeteorArmorSynergies: {
-					Tooltip: "Meteor armor gives less damage, but more weapons get free casts with it"
+					Tooltip: Meteor armor gives less damage, but more weapons get free casts with it
 					Label: Meteor Armor Synergies
 				}
 			}

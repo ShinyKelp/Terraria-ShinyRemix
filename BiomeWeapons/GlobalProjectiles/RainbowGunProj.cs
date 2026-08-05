@@ -141,6 +141,10 @@ namespace ShinyRemix.BiomeWeapons.GlobalProjectiles
 
             projectile.rotation = projectile.rotation.AngleLerp(0f, 0.2f);
 
+
+            if(projectile.type == ProjectileID.Flamelash)
+                projectile.rotation = MathHelper.PiOver2;
+
             return false;
         }
 
