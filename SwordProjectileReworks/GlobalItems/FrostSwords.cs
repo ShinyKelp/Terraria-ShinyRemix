@@ -1,5 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
-using ShinyRemix.SwordProjectileRates;
+using ShinyRemix.SwordProjectileRates.GlobalItems;
 using System;
 using System.Collections.Generic;
 using System.Linq;

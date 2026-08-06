@@ -44,6 +44,7 @@ namespace ShinyRemix
             NNBSpears.NNBSpearUtils.SetUpUtils();
             Flails.FlailUtils.SetUpUtils();
             ArrowSynergies.ArrowSynergyUtils.SetUpUtils();
+            SwordProjectileRates.SwordRateUtils.SetUpUtils();
         }
 	}
 }

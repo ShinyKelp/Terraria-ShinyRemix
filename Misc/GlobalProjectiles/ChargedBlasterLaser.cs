@@ -8,7 +8,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ShinyRemix.MartianBuffs.GlobalProjectiles
+namespace ShinyRemix.Misc.GlobalProjectiles
 {
     public class ChargedBlasterLaser : GlobalProjectile
     {

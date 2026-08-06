@@ -8,8 +8,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-
-namespace ShinyRemix.SwordProjectileRates
+namespace ShinyRemix.SwordProjectileRates.GlobalItems
 {
     public class StableSwordFireRates : GlobalItem
     {
@@ -24,27 +23,35 @@ namespace ShinyRemix.SwordProjectileRates
         public override void SetDefaults(Item entity)
         {
             entity.shootsEveryUse = true;
-            switch (entity.type)
+            if(SwordRateUtils.ModdedSwordTypes.ContainsKey(entity.type))
+                swingsPerShot = SwordRateUtils.ModdedSwordRates[SwordRateUtils.ModdedSwordTypes[entity.type]];
+            else
             {
-                case ItemID.IceSickle:
-                case ItemID.DeathSickle:
-                case ItemID.LightsBane:
-                case ItemID.StarWrath:
-                    swingsPerShot = 1;
-                    break;
-                case ItemID.IceBlade:
-                case ItemID.Starfury:
-                case ItemID.ChlorophyteSaber:
-                case ItemID.BeamSword:
-                    swingsPerShot = 3;
-                    break;
-                case ItemID.Seedler:
-                    swingsPerShot = 3;
-                    entity.damage += 15;
-                    break;
-                case ItemID.EnchantedSword:
-                    swingsPerShot = 4;
-                    break;
+                switch (entity.type)
+                {
+                    case ItemID.IceSickle:
+                    case ItemID.DeathSickle:
+                    case ItemID.LightsBane:
+                    case ItemID.StarWrath:
+                        swingsPerShot = 1;
+                        break;
+                    case ItemID.IceBlade:
+                    case ItemID.Starfury:
+                    case ItemID.ChlorophyteSaber:
+                    case ItemID.BeamSword:
+                        swingsPerShot = 3;
+                        break;
+                    case ItemID.Seedler:
+                        swingsPerShot = 3;
+                        entity.damage += 15;
+                        break;
+                    case ItemID.EnchantedSword:
+                        swingsPerShot = 4;
+                        break;
+                    default:
+                        swingsPerShot = 2;
+                        break;
+                }
             }
         }
 
