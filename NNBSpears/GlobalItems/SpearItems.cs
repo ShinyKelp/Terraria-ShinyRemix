@@ -14,7 +14,7 @@ namespace ShinyRemix.NNBSpears.GlobalItems
         public override bool AppliesToEntity(Item item, bool lateInstatiation)
         {
             return ShinyOptions.SpearRework && (NNBSpearUtils.VanillaSpears.Contains(item.type) ||
-                NNBSpearUtils.ModSpearIDs.ContainsValue(item.type));
+                NNBSpearUtils.ModSpearProjIDs.ContainsValue(item.type));
         }
 
         public override void SetDefaults(Item item)

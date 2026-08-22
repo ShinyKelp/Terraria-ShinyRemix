@@ -13,7 +13,7 @@ namespace ShinyRemix.Flails.GlobalItems
     {
         public override bool AppliesToEntity(Item entity, bool lateInstantiation)
         {
-            return FlailUtils.ModFlailItems.ContainsValue(entity.type);
+            return FlailUtils.ModFlailItemIDs.Contains(entity.type);
         }
 
         public override void SetDefaults(Item entity)

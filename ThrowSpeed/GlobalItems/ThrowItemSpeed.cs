@@ -26,7 +26,7 @@ namespace ShinyRemix.ThrowSpeed.GlobalItems
             entity.useTime += (int)Math.Floor(entity.useTime * 0.1f) + 2;
             if (entity.type == ItemID.DayBreak) 
             { 
-                if (!(ShinyUtils.TRAE && NNBSpearUtils.ModSpearIDs["Daybreak"] != -1))
+                if (!(ShinyUtils.TRAE && NNBSpearUtils.ModSpearProjIDs.ContainsKey("Daybreak")))
                 {
                     entity.damage -= 10;
                 }

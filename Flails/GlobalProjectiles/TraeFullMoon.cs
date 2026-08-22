@@ -18,7 +18,7 @@ namespace ShinyRemix.Flails.GlobalProjectiles
     {
         public override bool AppliesToEntity(Projectile entity, bool lateInstantiation)
         {
-            return ShinyOptions.FlailChanges && ShinyUtils.TRAE && entity.type == FlailUtils.FullMoonID;
+            return ShinyOptions.FlailChanges && ShinyUtils.TRAE && entity.type == FlailUtils.FullMoonProjID;
         }
     }
 }

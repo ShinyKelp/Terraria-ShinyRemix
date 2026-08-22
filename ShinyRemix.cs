@@ -8,6 +8,7 @@ using System;
 using System.Globalization;
 using System.Collections.Generic;
 using Mono.Cecil.Cil;
+using ShinyRemix.ThrowSpeed.GlobalItems;
 
 namespace ShinyRemix
 {
@@ -45,6 +46,7 @@ namespace ShinyRemix
             Flails.FlailUtils.SetUpUtils();
             ArrowSynergies.ArrowSynergyUtils.SetUpUtils();
             SwordProjectileRates.SwordRateUtils.SetUpUtils();
+            ThrowSpeed.ThrowSpeedUtils.SetUpUtils();
         }
 	}
 }

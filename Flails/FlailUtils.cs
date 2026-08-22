@@ -9,43 +9,52 @@ namespace ShinyRemix.Flails
 {
     public static class FlailUtils
     {
-        public static int VaporizerFlailID = -1;
-        public static int FullMoonID = -1;
-        public static Dictionary<string, int> ModFlailItems = new Dictionary<string, int>()
+
+        private static Dictionary<string, HashSet<string>> ModFlailItemNames = new Dictionary<string, HashSet<string>>()
         {
-            {"BoneFlayerTail",-1},
-            {"EbonyTail",-1},
-            {"FleshMace",-1},
-            {"LivewireCrasher",-1},
-            {"LodeStoneBreaker",-1},
-            {"SparkingJellyBall",-1},
-            {"StarTrail",-1},
-            {"SteamFlail",-1},
-            {"TheJuggernaut",-1},
-            {"TheSeaMine",-1},
-            {"TheSnowball",-1}
+            {
+                "ThoriumMod", new HashSet<string>()
+                {
+                    "BoneFlayerTail",
+                    "EbonyTail",
+                    "FleshMace",
+                    "LivewireCrasher",
+                    "LodeStoneBreaker",
+                    "SparkingJellyBall",
+                    "StarTrail",
+                    "SteamFlail",
+                    "TheJuggernaut",
+                    "TheSeaMine",
+                    "TheSnowball"
+                }
+            }
         };
+
+        public static int VaporizerFlailProjID = -1;
+        public static int FullMoonProjID = -1;
+
+        public static HashSet<int> ModFlailItemIDs = new HashSet<int>();
 
         public static void SetUpUtils()
         {
             if(ShinyUtils.Thorium && ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod))
             {
-                foreach(string itemName in ModFlailItems.Keys)
+                foreach(string itemName in ModFlailItemNames["ThoriumMod"])
                 {
                     if (thoriumMod.TryFind(itemName, out ModItem thoriumItem))
-                        ModFlailItems[itemName] = thoriumItem.Type;
+                        ModFlailItemIDs.Add(thoriumItem.Type);
                 }
             }
             if (ModLoader.TryGetMod("StormDiversMod", out Mod stormMod))
             {
                 if (stormMod.TryFind("DestroyerFlailProj", out ModProjectile proj))
-                    FlailUtils.VaporizerFlailID = proj.Type;
+                    VaporizerFlailProjID = proj.Type;
             }
 
             if (ModLoader.TryGetMod("TRAEProject", out Mod traeMod))
             {
                 if (traeMod.TryFind<ModProjectile>("FullMoonP", out ModProjectile proj))
-                    FlailUtils.FullMoonID = proj.Type;
+                    FullMoonProjID = proj.Type;
             }
         }
 

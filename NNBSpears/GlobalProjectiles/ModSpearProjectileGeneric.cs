@@ -27,7 +27,7 @@ namespace ShinyRemix.NNBSpears.GlobalProjectiles
             if (ShinyOptions.SpearRework &&
                 entity.aiStyle == ProjAIStyleID.Spear &&
                 !NNBSpearUtils.VanillaSpears.Contains(entity.type) &&
-                !NNBSpearUtils.ModSpearIDs.ContainsValue(entity.type))
+                !NNBSpearUtils.ModSpearProjIDs.ContainsValue(entity.type))
                 return true;
             else return false;
         }

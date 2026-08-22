@@ -19,7 +19,7 @@ namespace ShinyRemix.BiomeWeapons.GlobalItems
         }
         public override void SetDefaults(Item entity)
         {
-            if (ShinyUtils.TRAE && NNBSpearUtils.ModSpearIDs["SoTC"] != -1)
+            if (ShinyUtils.TRAE && NNBSpearUtils.ModSpearProjIDs["SoTC"] != -1)
             {
                 entity.useTime = entity.useAnimation = 33;
                 entity.damage -= 5;

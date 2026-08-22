@@ -23,8 +23,8 @@ namespace ShinyRemix.SwordProjectileRates.GlobalItems
         public override void SetDefaults(Item entity)
         {
             entity.shootsEveryUse = true;
-            if(SwordRateUtils.ModdedSwordTypes.ContainsKey(entity.type))
-                swingsPerShot = SwordRateUtils.ModdedSwordRates[SwordRateUtils.ModdedSwordTypes[entity.type]];
+            if(SwordRateUtils.ModSwordRates.ContainsKey(entity.type))
+                swingsPerShot = SwordRateUtils.ModSwordRates[entity.type];
             else
             {
                 switch (entity.type)

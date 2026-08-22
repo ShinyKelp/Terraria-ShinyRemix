@@ -20,7 +20,7 @@ namespace ShinyRemix.Flails.GlobalProjectiles
 
         public override bool AppliesToEntity(Projectile entity, bool lateInstantiation)
         {
-            return ShinyOptions.FlailChanges && ShinyUtils.StormDivers && entity.type == FlailUtils.VaporizerFlailID;
+            return ShinyOptions.FlailChanges && ShinyUtils.StormDivers && entity.type == FlailUtils.VaporizerFlailProjID;
         }
         public override bool PreAI(Projectile projectile)
         {
