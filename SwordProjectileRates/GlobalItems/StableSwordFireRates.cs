@@ -17,7 +17,8 @@ namespace ShinyRemix.SwordProjectileRates.GlobalItems
         public static int Swings { get; private set; } = 0;
         public override bool AppliesToEntity(Item entity, bool lateInstantiation)
         {
-            return ShinyOptions.SwordProjectileRates && entity.DamageType == DamageClass.Melee && !entity.noMelee && entity.pick == 0 && entity.axe == 0 && entity.hammer == 0 && entity.useStyle == ItemUseStyleID.Swing && entity.shoot != -1 && !entity.shootsEveryUse;
+            return (ShinyOptions.SwordProjectileRates && entity.DamageType == DamageClass.Melee && !entity.noMelee && entity.pick == 0 && entity.axe == 0 && entity.hammer == 0 && entity.useStyle == ItemUseStyleID.Swing && entity.shoot != -1 && !entity.shootsEveryUse)
+                || SwordRateUtils.ModSwordRates.ContainsKey(entity.type);
         }
 
         public override void SetDefaults(Item entity)

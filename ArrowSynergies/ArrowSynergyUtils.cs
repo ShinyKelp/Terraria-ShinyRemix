@@ -14,10 +14,16 @@ namespace ShinyRemix.ArrowSynergies
         private static Dictionary<string, HashSet<string>> ModComplexBows = new Dictionary<string, HashSet<string>>()
         {
             {
-                "ThoriumMod", new HashSet<string> 
+                "ThoriumMod", new HashSet<string>()
                 {
                     "ChampionsTrifectaShot", 
                     "CinderString" 
+                }
+            },
+            {
+                "TRAEProject", new HashSet<string>()
+                {
+                    "Tribow"
                 }
             }
         };
@@ -54,6 +60,12 @@ namespace ShinyRemix.ArrowSynergies
                     "ChampionsTrifectaShotPro2",
                     "ChampionsTrifectaShotPro3",
                     "ChampionsTrifectaShotPro4"
+                }
+            },
+            {
+                "TRAEProject", new HashSet<string>()
+                {
+                    "Trirrow"
                 }
             }
         };
@@ -98,31 +110,48 @@ namespace ShinyRemix.ArrowSynergies
         {
             if (ShinyUtils.Thorium && ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod))
             {
-                foreach (KeyValuePair<string, string> bowPair in ModBowArrowPairNames["ThoriumMod"])
+                SetUpModArrowSynergies(thoriumMod);
+            }
+            if(ShinyUtils.TRAE && ModLoader.TryGetMod("TRAEProject", out Mod traeMod))
+            {
+                SetUpModArrowSynergies(traeMod);
+            }
+        }
+
+        private static void SetUpModArrowSynergies(Mod mod) 
+        {
+            if (ModBowArrowPairNames.ContainsKey(mod.Name))
+            {
+                foreach (KeyValuePair<string, string> bowPair in ModBowArrowPairNames[mod.Name])
                 {
                     ModItem bow;
                     ModProjectile bowShoot;
 
-                    if (thoriumMod.TryFind(bowPair.Key, out bow) && thoriumMod.TryFind(bowPair.Value, out bowShoot))
+                    if (mod.TryFind(bowPair.Key, out bow) && mod.TryFind(bowPair.Value, out bowShoot))
                         BowArrowSignatures.Add(bow.Type, bowShoot.Type);
-
                 }
-                foreach (string complexBow in ModComplexBows["ThoriumMod"])
+            }
+
+            if (ModComplexBows.ContainsKey(mod.Name))
+            {
+                foreach (string complexBow in ModComplexBows[mod.Name])
                 {
                     ModItem bow;
-                    if (thoriumMod.TryFind(complexBow, out bow))
+                    if (mod.TryFind(complexBow, out bow))
                     {
                         BowArrowSignatures.Add(bow.Type, ProjectileID.WoodenArrowFriendly);
                     }
                 }
-
-                foreach (string arrowName in ModArrowOverrides["ThoriumMod"])
+            }
+            
+            if (ModArrowOverrides.ContainsKey(mod.Name))
+            {
+                foreach (string arrowName in ModArrowOverrides[mod.Name])
                 {
                     ModProjectile arrow;
-                    if (thoriumMod.TryFind(arrowName, out arrow))
+                    if (mod.TryFind(arrowName, out arrow))
                         ArrowOverrides.Add(arrow.Type);
                 }
-
             }
         }
 

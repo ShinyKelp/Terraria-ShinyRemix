@@ -112,11 +112,10 @@ namespace ShinyRemix.Flails.GlobalProjectiles
             else if(projectile.ai[0] == 0f && !player.channel && megaLaunch)
             {
                 //Bomb sound ID? Or harpoon?
-                SoundStyle style = SoundID.Item10 with
+                SoundStyle style = SoundID.Item1 with
                 {
                     Pitch = -0.7f,
                     Volume = 4f
-
                 };
                 SoundEngine.PlaySound(style, player.position);
             }
@@ -143,7 +142,7 @@ namespace ShinyRemix.Flails.GlobalProjectiles
 
                 //Make flail swing further away from the player
                 Vector2 offset = projectile.Center - player.MountedCenter;
-                float radiusModifier = projectile.scale / origScale;
+                float radiusModifier = projectile.scale / origScale + (player.GetAttackSpeed(DamageClass.Melee)-1f) * 0.25f;
                 offset = offset * (radiusModifier - 1f) * 2f;
                 projectile.Center += offset;
 

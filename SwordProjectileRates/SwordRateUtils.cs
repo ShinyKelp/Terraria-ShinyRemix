@@ -36,6 +36,12 @@ namespace ShinyRemix.SwordProjectileRates
                     {"SpaceRockSword", 1 },
                     {"LightDarkSword", 1 },
                 }
+            },
+            {
+                "TRAEProject", new Dictionary<string, int>()
+                {
+                    {"HeadHarvester", 1 }
+                }
             }
         };
 
@@ -43,12 +49,25 @@ namespace ShinyRemix.SwordProjectileRates
         {
             if (ShinyUtils.Thorium && ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod))
             {
-                foreach(string swordName in ModSwordRateNames["ThoriumMod"].Keys)
+                RegisterModSwords(thoriumMod);
+            }
+            if (ShinyUtils.StormDivers && ModLoader.TryGetMod("StormDiversMod", out Mod stormMod))
+            {
+                RegisterModSwords(stormMod);
+            }
+            if(ShinyUtils.TRAE && ModLoader.TryGetMod("TRAEProject", out Mod traeMod))
+            {
+                RegisterModSwords(traeMod);
+            }
+        }
+
+        private static void RegisterModSwords(Mod mod)
+        {
+            foreach (string swordName in ModSwordRateNames[mod.Name].Keys)
+            {
+                if (mod.TryFind(swordName, out ModItem swordItem))
                 {
-                    if(thoriumMod.TryFind(swordName, out ModItem swordItem))
-                    {
-                        ModSwordRates.Add(swordItem.Type, ModSwordRateNames["ThoriumMod"][swordName]);
-                    }
+                    ModSwordRates.Add(swordItem.Type, ModSwordRateNames[mod.Name][swordName]);
                 }
             }
         }

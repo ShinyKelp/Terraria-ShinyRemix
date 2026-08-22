@@ -85,6 +85,26 @@ namespace ShinyRemix.Flails.ModProjectiles
             hitbox.Inflate(inflateX, inflateY);
         }
 
+        public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
+        {
+            if (projHitbox.Intersects(targetHitbox))
+                return base.Colliding(projHitbox, targetHitbox);
+            else
+            {
+                Vector2 start = Main.player[Projectile.owner].Center;
+                Vector2 end = Projectile.Center;
+
+                float collisionPoint = 0f;
+
+                if (Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), start, end, 10f, ref collisionPoint))
+                {
+                    return true;
+                }
+
+                return base.Colliding(projHitbox, targetHitbox);
+            }
+        }
+
 
     }
 }
