@@ -44,6 +44,13 @@ namespace ShinyRemix.ArrowSynergies
                     {"GlacialSting","GlacialArrow"},
                     {"ShusWrath","ShusArrow"},
                 }
+            },
+            {
+                "StormDiversMod", new Dictionary<string, string>()
+                {
+                    {"HarpyBow", "HarpyArrowProj"},
+
+                }
             }
         };
         //Add consolaria vulcan
@@ -66,6 +73,22 @@ namespace ShinyRemix.ArrowSynergies
                 "TRAEProject", new HashSet<string>()
                 {
                     "Trirrow"
+                }
+            },
+            {
+                "StormDiversMod", new HashSet<string>()
+                {
+                    "DesertBowProj",
+                    "HellSoulBowProj",
+                    "ShroomBowArrowProj",
+                    "CultistBowProj",
+                    "CultistBowProj2"
+                }
+            },
+            {
+                "Consolaria", new HashSet<string>()
+                {
+                    "VulcanBolt"
                 }
             }
         };
@@ -115,6 +138,14 @@ namespace ShinyRemix.ArrowSynergies
             if(ShinyUtils.TRAE && ModLoader.TryGetMod("TRAEProject", out Mod traeMod))
             {
                 SetUpModArrowSynergies(traeMod);
+            }
+            if (ShinyUtils.StormDivers && ModLoader.TryGetMod("StormDiversMod", out Mod stormMod))
+            {
+                SetUpModArrowSynergies(stormMod);
+            }
+            if (ShinyUtils.StormDivers && ModLoader.TryGetMod("Consolaria", out Mod consoleMod))
+            {
+                SetUpModArrowSynergies(consoleMod);
             }
         }
 
