@@ -59,6 +59,10 @@ namespace ShinyRemix
 
         [ReloadRequired]
         [DefaultValue(true)]
+        public bool HMGunBuffs = true;
+
+        [ReloadRequired]
+        [DefaultValue(true)]
         public bool ShroomiteTweaks = true;
 
         [ReloadRequired]
@@ -117,6 +121,7 @@ namespace ShinyRemix
         public static bool ThrowSpeedScaling => GetInstance<ShinyConfig>().ThrowSpeedScaling;
         public static bool MeleeArmorChanges => GetInstance<ShinyConfig>().MeleeArmorChanges;
         public static bool SimpleArrowCompatibility => GetInstance<ShinyConfig>().SimpleArrowCompatibility;
+        public static bool HMGunBuffs => GetInstance<ShinyConfig>().HMGunBuffs;
         public static bool ShroomiteTweaks => GetInstance<ShinyConfig>().ShroomiteTweaks;
         public static bool OverloadMechanic => GetInstance<ShinyConfig>().OverloadMechanic;
         public static bool BlessedMechanic => GetInstance<ShinyConfig>().BlessedMechanic;

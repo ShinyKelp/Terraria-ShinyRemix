@@ -163,6 +163,11 @@ Mods: {
 					Tooltip: Meteor armor gives less damage, but more weapons get free casts with it
 					Label: Meteor Armor Synergies
 				}
+
+				HMGunBuffs: {
+					Tooltip: Improvements for some underused hardmode guns.
+					Label: Hardmode Gun Buffs
+				}
 			}
 		}
 	}

@@ -27,13 +27,13 @@ namespace ShinyRemix.BlessedMechanic.UI
 
             if (item.IsAir)
             {
-                Main.npcChatText = "Hold a magic weapon.";
+                Main.npcChatText = "Do you have a magical gadget? I can give it my blessing to it costs you no mana. Sounds fun right, lad?";
                 return;
             }
 
             if (item.DamageType != DamageClass.Magic)
             {
-                Main.npcChatText = "This is not a magic weapon.";
+                Main.npcChatText = "Hoho! Sorry, but I can't work with that!";
                 return;
             }
 
@@ -41,13 +41,38 @@ namespace ShinyRemix.BlessedMechanic.UI
 
             if (global.blessed)
             {
-                Main.npcChatText = "Already blessed.";
+                Main.npcChatText = "Hm, this weapon already has a blessing. Do you want it removed? I would talk to the goblin if so.";
                 return;
             }
 
             if (!player.BuyItem(Item.buyPrice(copper: player.HeldItem.value * 2)))
             {
-                Main.npcChatText = "Not enough gold.";
+                string moneyStr = "";
+                int price = Item.buyPrice(copper: player.HeldItem.value * 2);
+                int copperPrice = price % 100;
+                if (copperPrice > 0)
+                    moneyStr = " " + copperPrice + " copper";
+                if (price >= 100)
+                {
+                    price = price / 100;
+                    int silverPrice = price % 100;
+                    if (silverPrice > 0)
+                        moneyStr = " " + silverPrice + " silver" + moneyStr;
+                    if (price >= 100)
+                    {
+                        Main.NewText($"Reached gold: {price}");
+                        price = price / 100;
+                        int goldPrice = price % 100;
+                        if (goldPrice > 0)
+                            moneyStr = " " + goldPrice + " gold" + moneyStr;
+                        if (price >= 100)
+                        {
+                            Main.NewText($"Reached plat: {price}");
+                            price = price / 100;
+                            moneyStr = " " + price + " platinum" + moneyStr;
+                        }
+                    }
+                }
                 return;
             }
 
@@ -55,7 +80,7 @@ namespace ShinyRemix.BlessedMechanic.UI
 
             SoundEngine.PlaySound(SoundID.Item4);
 
-            Main.npcChatText = $"{item.Name} has been blessed!";
+            Main.npcChatText = $"{item.Name} has my blessing. Enjoy it!";
         }
     }
 }
