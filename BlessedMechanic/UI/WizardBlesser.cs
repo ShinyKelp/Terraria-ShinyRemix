@@ -60,14 +60,12 @@ namespace ShinyRemix.BlessedMechanic.UI
                         moneyStr = " " + silverPrice + " silver" + moneyStr;
                     if (price >= 100)
                     {
-                        Main.NewText($"Reached gold: {price}");
                         price = price / 100;
                         int goldPrice = price % 100;
                         if (goldPrice > 0)
                             moneyStr = " " + goldPrice + " gold" + moneyStr;
                         if (price >= 100)
                         {
-                            Main.NewText($"Reached plat: {price}");
                             price = price / 100;
                             moneyStr = " " + price + " platinum" + moneyStr;
                         }

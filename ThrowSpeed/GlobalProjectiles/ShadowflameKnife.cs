@@ -28,7 +28,6 @@ namespace ShinyRemix.ThrowSpeed.GlobalProjectiles
         {
             if (projectile.ai[0] == 30f && projectile.penetrate >= 3)
             {
-                Main.NewText($"Damage reduction.");
             projectile.damage = (int)Math.Floor(projectile.damage * 0.75f);
 
             }

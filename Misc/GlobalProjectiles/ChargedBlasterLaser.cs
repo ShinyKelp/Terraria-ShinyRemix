@@ -23,9 +23,6 @@ namespace ShinyRemix.Misc.GlobalProjectiles
         }
         public override bool PreAI(Projectile projectile)
         {
-            Main.NewText($"Time left: {projectile.timeLeft}");
-            Main.NewText($"Sync AIs: {projectile.ai[0]}, {projectile.ai[1]}, {projectile.ai[2]}");
-            Main.NewText($"LocalAIs: {projectile.localAI[0]}, {projectile.localAI[1]}, {projectile.localAI[2]}");
             if (projectile.ai[0] == 200f)
                 projectile.ai[0] = 100f;
             return base.PreAI(projectile);

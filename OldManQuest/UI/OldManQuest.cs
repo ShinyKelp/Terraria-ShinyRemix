@@ -56,12 +56,6 @@ namespace ShinyRemix.CursedManQuest.UI
                         while (spawnedItem.value >= baseItem.value && rollAttemts > 0)
                         {
                             spawnedItem.SetDefaults(spawnedItem.type);
-                            if (!spawnedItem.Prefix(-1))
-                            {
-                                Main.NewText($"Warning: Prefix did not work.");
-                            }
-                            else
-                                Main.NewText($"Prefix value: {baseItem.value} - {spawnedItem.value}");
                             rollAttemts--;
                         }
                         if (rollAttemts == 0)

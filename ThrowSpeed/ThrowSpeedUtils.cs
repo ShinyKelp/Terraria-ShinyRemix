@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Humanizer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,28 @@ namespace ShinyRemix.ThrowSpeed
                     "WingspanBlue"
                 }
             },
+            {
+                "StormDiversMod", new HashSet<string>()
+                {
+                    "BoneBoomerang"
+                }
+            },
+            {
+                "ThoriumMod", new HashSet<string>()
+                {
+                    "BentZombieArm",
+                    "ClimbersIceAxe",
+                    "ColdFront",
+                    "GiantGlowstick",
+                    "GraniteReflector",
+                    "OceansJudgement",
+                    "ShipsHelm",
+                    "TerrariumHyperDisc",
+                    "ThoriumBoomerang",
+                    "TitanBoomerang"
+
+                }
+            }
         };
 
         public static HashSet<int> ThrowItems = new HashSet<int>()
@@ -29,20 +52,42 @@ namespace ShinyRemix.ThrowSpeed
             ItemID.ScourgeoftheCorruptor,
             ItemID.PossessedHatchet,
             ItemID.DayBreak,
-            ItemID.Trimarang
+            ItemID.Trimarang,
+            ItemID.WoodenBoomerang,
+            ItemID.EnchantedBoomerang,
+            ItemID.IceBoomerang,
+            ItemID.Shroomerang,
+            ItemID.ThornChakram,
+            ItemID.Flamarang,
+            ItemID.Bananarang,
+            ItemID.LightDisc,
+            ItemID.FruitcakeChakram
         };
+
+        private static void SetUpMod(Mod mod)
+        {
+            foreach (string itemName in ModThrowItemNames[mod.Name])
+            {
+                if (mod.TryFind(itemName, out ModItem modItem))
+                {
+                    ThrowItems.Add(modItem.Type);
+                }
+            }
+        }
 
         public static void SetUpUtils()
         {
             if (ShinyUtils.TRAE && ModLoader.TryGetMod("TRAEProject", out Mod traeMod))
             {
-                foreach (string itemName in ModThrowItemNames["TRAEProject"])
-                {
-                    if(traeMod.TryFind(itemName, out ModItem modItem))
-                    {
-                        ThrowItems.Add(modItem.Type);
-                    }
-                }
+                SetUpMod(traeMod);
+            }
+            if (ShinyUtils.TRAE && ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod))
+            {
+                SetUpMod(thoriumMod);
+            }
+            if (ShinyUtils.TRAE && ModLoader.TryGetMod("StormDiversMod", out Mod stormDiversMod))
+            {
+                SetUpMod(stormDiversMod);
             }
         }
     }
