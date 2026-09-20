@@ -1,20 +1,17 @@
-If you're tired of vanilla spears but you want a conservative, "vanilla+" style mod that improves them, this might just be the mod you're looking for!
+Shiny's Remix is a "rebalance" mod that changes (mostly) a bunch of vanilla weapons, focusing on making them more fun and unique.
 
-Nice & Balanced Spear Buffs makes all spears a lot more comfortable and easy to use with a brand new thrust animation that allows you to quickly retarget the spear!
+The core aspects of the mod are:
 
-Additionally, this mod also buffs a handful of spears, giving them new effects.
+[list]
+    [*]Vanilla+. Nothing that looks out of place in regular Terraria.
+    [*]Modularity. Mod is divided into several parts, you can toggle each one individually.
+    [*]Minimalism. Does not add new content; instead refreshes existing content.
+    [*]Compatibility with other vanilla+ mods: Thorium, Storm's Additions, TRAE, Consolaria.
+[/list]
 
-List of changes:
--All spears have autoswing.
--All spears except the Ghastly Glaive have a new thrusting animation.
--The Rotted Fork inflicts Bleeding debuff.
--Dark Lance inflicts Shadowflame debuff like in 1.4.4.
--Mushroom Spear and its projectile inflict Confused debuff.
--Mushroom Spear's Mushroom projectiles have been adjusted to better reflect the new animation.
--Mushroom Spear's Mushroom projectiles now deal 100% of the base damage, up from 33%.
--Chlorophyte Partisan and its projectile inflict Venom debuff.
--Spore Cloud (Chlorophyte Partisan's projectile) grows bigger in size over time.
--North Pole and its projectiles inflict Frostbite debuff.
--North Pole has new particle effects.
+A google doc compiles all of the individual mod parts along with their changes:
+[url=https://docs.google.com/document/d/1ZAnYhpZzJ_Yh18O6L1dQfyK-2aoVSNZ2WCVTQPT3yJM/edit?usp=sharing] Mod changes here![/url]
 
-Note: The Rotted Fork, Dark Lance and Gungnir will receive their 1.4.4 projectiles when tModLoader updates to that version.
+
+[quote=tModLoader ShinyRemix]
+Developed By Shiny  Kelp[/quote]

@@ -51,6 +51,8 @@ internal static class NNBSpearUtils
 
     public static Dictionary<string, int> ModSpearProjIDs = new Dictionary<string, int>() { };
     public static List<int> VanillaSpears = new List<int>() { ItemID.Spear, ItemID.Trident, ItemID.TheRottedFork, ItemID.ThunderSpear, ItemID.DarkLance, ItemID.Swordfish, ItemID.ObsidianSwordfish, ItemID.CobaltNaginata, ItemID.PalladiumPike, ItemID.MythrilHalberd, ItemID.OrichalcumHalberd, ItemID.AdamantiteGlaive, ItemID.TitaniumTrident, ItemID.Gungnir, ItemID.ChlorophytePartisan, ItemID.NorthPole, ItemID.MonkStaffT2, ItemID.MushroomSpear };
+    public static List<int> VanillaSpearProjs = new List<int>() { ProjectileID.Spear, ProjectileID.Trident, ProjectileID.TheRottedFork, ProjectileID.ThunderSpear, ProjectileID.DarkLance, ProjectileID.Swordfish, ProjectileID.ObsidianSwordfish, ProjectileID.CobaltNaginata, ProjectileID.PalladiumPike, ProjectileID.MythrilHalberd, ProjectileID.OrichalcumHalberd, ProjectileID.AdamantiteGlaive, ProjectileID.TitaniumTrident, ProjectileID.Gungnir, ProjectileID.ChlorophytePartisan, ProjectileID.NorthPoleWeapon, ProjectileID.MonkStaffT2, ProjectileID.MushroomSpear };
+    public static List<int> ProjectileBlacklist = new List<int>() { ProjectileID.JoustingLance, ProjectileID.HallowJoustingLance, ProjectileID.ShadowJoustingLance };
     public static int TRAEJoterTridentItemID = -1;
     public static int TonbogiriItemID = -1;
 
